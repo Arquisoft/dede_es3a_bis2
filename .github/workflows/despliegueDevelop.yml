@@ -1,0 +1,41 @@
+name: Pruebas despliegue
+
+on:
+  push:
+    branches:
+      - 'uo68216-pruebas-despliegue'
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+
+jobs:
+  #Front-end
+  docker-push-webapp:
+    name: Push webapp Docker Image to GitHub Packages
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@3.04
+      with:
+          name: ${{ github.repository }}/webapp
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKER_PUSH_TOKEN }}
+          registry: ${{ env.REGISTRY }}
+          workdir: webapp
+  
+  #Back-end
+  docker-push-restapi:
+    name: Push restapi Docker Image to GitHub Packages
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@3.04
+      with:
+          name: ${{ github.repository }}/restapi
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKER_PUSH_TOKEN }}
+          registry: ${{ env.REGISTRY }}
+          workdir: restapi
