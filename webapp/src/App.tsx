@@ -10,26 +10,28 @@ import { useState } from 'react';
 import { SessionProvider } from '@inrupt/solid-ui-react';
 import FormLogIn from './components/Login/FormLogIn';
 import ProfileViewer from './components/Login/ProfileViewer';
+import LogInPassword from './components/Login/LogInPassword';
 
-let productos= new Array<Product>();
+let productos = new Array<Product>();
 function App(): JSX.Element {
 
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  
+
   return (
     <>
-    <SessionProvider sessionId="logIn">
-      <Router>
-      <Routes>
-        <Route  path={"/"} element={<Home/>} />
-        <Route  path="/Cart" element={<Cart/>}/>
-        <Route  path="/Details" element={<Details/>}/>
-        <Route  path="/FormLogIn" element={<FormLogIn/>}/>
-        <Route  path="/ProfileViewer" element={<ProfileViewer/>}/>
-        <Route  path="/Requests" element={<Requests/>}/>
-        </Routes>
-        <Footer/>
-      </Router>
+      <SessionProvider sessionId="logIn">
+        <Router>
+          <Routes>
+            <Route path={"/"} element={<Home />} />
+            <Route path="/Cart" element={<Cart />} />
+            <Route path="/Details" element={<Details />} />
+            <Route path="/FormLogIn" element={<FormLogIn />} />
+            <Route path="/ProfileViewer" element={<ProfileViewer />} />
+            <Route path="/Requests" element={<Requests />} />
+            <Route path="/LogInPassword" element={<LogInPassword />}></Route>
+          </Routes>
+          <Footer />
+        </Router>
       </SessionProvider>
     </>
   );

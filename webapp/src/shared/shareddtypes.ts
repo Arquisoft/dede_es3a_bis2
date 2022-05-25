@@ -1,8 +1,8 @@
 import { ObjectId } from 'mongoose';
 
 export type User = {
-  name: string;
-  email: string;
+  nombreUsuario: string;
+  contraseña:string;
 }
 
 export type Product = {

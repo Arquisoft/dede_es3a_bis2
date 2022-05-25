@@ -43,8 +43,8 @@ async function getDireccion(webId: string): Promise<Address> {
   let addressUsuario = await getThing(dataSet, hasAddress);
 
   return {
-    calle:  getStringNoLocale(addressUsuario as Thing, VCARD.street_address) as string,
-    localidad:  getStringNoLocale(addressUsuario as Thing, VCARD.locality) as string,
+    calle: getStringNoLocale(addressUsuario as Thing, VCARD.street_address) as string,
+    localidad: getStringNoLocale(addressUsuario as Thing, VCARD.locality) as string,
     codigoPostal: getStringNoLocale(addressUsuario as Thing, VCARD.postal_code) as string,
     region: getStringNoLocale(addressUsuario as Thing, VCARD.region) as string,
     pais: getStringNoLocale(addressUsuario as Thing, VCARD.country_name) as string
@@ -62,7 +62,7 @@ const ProfileViewer = () => {
   const { webId } = session.info;
   // const direccion = async()=>await getDireccion(webId);
 
-  const [ addresses, setAddresses] = useState({
+  const [addresses, setAddresses] = useState({
     calle: '',
     localidad: '',
     codigoPostal: '',
@@ -96,11 +96,6 @@ const ProfileViewer = () => {
                   </Typography>
                 </CardContent>
                 <CardActionArea style={{ justifyContent: "center", display: "flex" }}>
-                  {/* <ThingProvider
-                    thing={VCARD.hasAddress}>
-                    <Text id="direction" property={VCARD.street_address.iri.value} />
-                    <Text id="direction" property={VCARD.region.iri.value} />
-                  </ThingProvider> */}
                   {direccionToString(addresses)}
                 </CardActionArea>
               </Card>

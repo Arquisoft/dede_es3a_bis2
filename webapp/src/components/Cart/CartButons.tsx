@@ -37,8 +37,8 @@ const useStyles = makeStyles({
     position: 'fixed',
     marginTop: '15%',
     marginBottom: '15%',
-    marginRight:'50%',
-    marginLeft:'50%'
+    marginRight: '50%',
+    marginLeft: '50%'
   }
 });
 
@@ -53,13 +53,15 @@ function FinishBuying() {
 export default function CartButons() {
   const classes = useStyles();
 
-  let rutaFinalizarCompra: string; // variable para almacenar a donde te redirige la aplicacion cuando intentas finalizar la compra
+  // ruta de redirección según estado
+  let rutaFinalizarCompra: string;
+
   if (sessionStorage.getItem('user') != null) {
     // el usuario Sí ha iniciado sesión
     rutaFinalizarCompra = '/FormLogIn'; // log de POD
   } else {
     // el usuario NO ha iniciado sesión
-    rutaFinalizarCompra = '/LoginUsrPsswd'; // tiene que iniciar sesión
+    rutaFinalizarCompra = '/LogInPassword'; // tiene que iniciar sesión
   }
 
   return (
@@ -70,10 +72,11 @@ export default function CartButons() {
             <Card>
               <Typography variant='h5'>
                 {/* el precio es mayor que 0 (no está vacío), se calcula */}
-                Precio de tu pedido sin gastos de envío: {calcularPrecioSinGastos()} €
+                Precio sin gastos de envío: {calcularPrecioSinGastos()} €
               </Typography>
-            </Card><Button variant="contained" endIcon={<ShoppingCartIcon />} sx={{ bgcolor: 'black' }} size='large' to={rutaFinalizarCompra} component={Link}>
-              Log In para Finalizar Compra
+            </Card>
+            <Button variant="contained" endIcon={<ShoppingCartIcon />} sx={{ bgcolor: 'black' }} size='large' to={rutaFinalizarCompra} component={Link}>
+              LogIn para Finalizar Compra
             </Button>
           </>
         ) : ([
@@ -85,9 +88,6 @@ export default function CartButons() {
           </Card>
         ])
         }
-        <Button variant="contained" endIcon={<ShoppingCartIcon />} sx={{ bgcolor: 'black' }} size='large' onClick={FinishBuying}>
-          Finalizar Compra
-        </Button>
       </div>
     </Container>
   );

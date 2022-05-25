@@ -34,14 +34,16 @@ const useStyles = makeStyles({
 
 const ShoesCart = () => {
   const classes = useStyles();
+
   const carrito = JSON.parse(sessionStorage.getItem('cart') as string);
+
   return (
     <Container maxWidth="md" className={classes.colores2}>
       <Typography variant='h3' className={classes.colores}>
-        ARTICULOS EN EL CARRITO
+        PRODUCTOS EN EL CARRITO
       </Typography>
       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 2, sm: 2, md: 4 }} rowSpacing={{ xs: 1 }}>
-        {carrito.map((item: TypeProduct & {talla:string}) =>
+        {carrito.map((item: TypeProduct & { talla: string }) =>
           <Grid item sm={2} md={2} key={item.id}>
             <Card className={classes.sizes}>
               <CardActionArea>
