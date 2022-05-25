@@ -47,7 +47,7 @@ const RightDetails = (parsed: parsedProduct) => {
           {parsed.product[0].descripcion}
         </Typography>
         <Typography gutterBottom variant="h6" color="#FFFFFF">
-          {parsed.product[0].precio}
+          {parsed.product[0].precio} €
         </Typography>
       </div>
 

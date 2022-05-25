@@ -124,7 +124,7 @@ const ShoesView = (parsed: ProductsParsed) => {
                   {item.nombre}
                 </Typography>
                 <Typography variant='h6'>
-                  Precio:{item.precio}
+                  Precio: {item.precio} €
                 </Typography>
 
               </CardContent>
