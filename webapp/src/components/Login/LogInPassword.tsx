@@ -80,23 +80,23 @@ const LogInPassword = () => {
                                     onChange={(e) => setContraseña(e.target.value)}>
                                 </TextField>
                             </FormGroup>
-                            <CardActions>
-                                <Button
-                                    onClick={iniciarSesion}
-                                    variant="contained"
-                                    size="large"
-                                    color="primary"
-                                    className={classes.loginBtn}
-                                    data-testid="addUser"
-                                >
-                                    LogIn
-                                </Button>
-                            </CardActions>
-                            <Typography variant="body1" component="p" id="help">
-                                <Link href="https://inrupt.net/register" margin={'10%'} text-align="center" > ¿No tienes una cuenta? Regístrate aquí</Link>
-                            </Typography>
                         </Container>
                     </CardContent>
+                    <CardActions>
+                        <Button
+                            onClick={iniciarSesion}
+                            variant="contained"
+                            size="large"
+                            color="primary"
+                            className={classes.loginBtn}
+                            data-testid="addUser"
+                        >
+                            LogIn
+                        </Button>
+                    </CardActions>
+                    <Typography variant="body1" component="p" id="help">
+                        <Link href="https://inrupt.net/register" margin={'10%'}> ¿No tienes una cuenta? Regístrate</Link>
+                    </Typography>
                 </Card>
             </form>
         </>

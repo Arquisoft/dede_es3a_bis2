@@ -48,11 +48,11 @@ export async function getTallas(productId: string): Promise<Talla[]> {
 }
 
 export async function getUsuario(nombreUsuario: string, contraseña: string): Promise<User | null> {
-  const apiPetition: string = apiEndPoint + '/users/login' + nombreUsuario + '/' + contraseña;
+  const apiPetition: string = apiEndPoint + '/users/login/' + nombreUsuario + '/' + contraseña;
   const response: Response = await fetch(apiPetition);
   if (response.status == 500) {
     return null;
-  } else {
-    return response.json();
   }
+  return response.json();
+
 }
