@@ -18,7 +18,7 @@ const RightDetails = (parsed: parsedProduct) => {
   const [talla, setTalla] = useState('');
 
   useEffect(() => {
-    const loadTallas =async () => {
+    const loadTallas = async () => {
       setTallas(await getTallas(parsed.product[0].id));
     }
     loadTallas();
@@ -57,7 +57,7 @@ const RightDetails = (parsed: parsedProduct) => {
         </Typography>
         <Typography gutterBottom variant="h6" color="#FFFFFF">
           {parsed.product[0].color}
-          </Typography>
+        </Typography>
       </div>
 
       <div>
@@ -66,20 +66,12 @@ const RightDetails = (parsed: parsedProduct) => {
         </Typography>
         <ButtonGroup color="primary" variant="outlined" aria-label="tallas">
           {tallas.map(t => (
-            <Button sx={talla == t.numero ? ({ bgcolor: 'black', color: '#FFFFFF' }):({ color: 'black', bgcolor: '#FFFFFF' })} onClick={() => setTalla(t.numero)}>{t.numero}</Button>
+            <Button sx={talla == t.numero ? ({ bgcolor: 'black', color: '#FFFFFF' }) : ({ color: 'black', bgcolor: '#FFFFFF' })} onClick={() => setTalla(t.numero)}>{t.numero}</Button>
           ))}
         </ButtonGroup>
       </div>
 
       <div>
-        <Button
-          variant="contained"
-          startIcon={<FavoriteBorder />}
-          size="medium"
-          sx={{ bgcolor: '#FFFFFF', color: 'black' }}>
-          Favorito
-        </Button>
-
         <Button variant="contained" endIcon={<ShoppingCartIcon />} sx={{ bgcolor: 'black' }} onClick={addToCart}>
           Añadir al carrito
         </Button>
