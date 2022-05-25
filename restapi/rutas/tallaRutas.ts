@@ -1,6 +1,7 @@
 import express, { Request, Response} from 'express';
 import { Talla } from '../modelos/tallaModelo';
 import mongoose from 'mongoose';
+import { Producto } from '../modelos/productoModelo';
 
 const router = express.Router();
 
@@ -21,11 +22,13 @@ router.get('/tallas/:id_producto', async (req: Request, res: Response) => {
 });
 
 //Devuelve todas las tallas con existencias de un producto
-router.get('/tallas_disponibles/:id_producto', async (req: Request, res: Response) => {
+router.get('/tallas_disponibles/:ref', async (req: Request, res: Response) => {
+  const product = await Producto.findOne({ referencia: req.params.ref })
+
   const tallas = await Talla
     .find(
       {   
-        producto: req.params.id_producto,
+        producto: product?.id,
         cantidad: { $gt: 0 } 
       },
       { _id: 0 ,  numero: 1, cantidad: 1 } )

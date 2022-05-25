@@ -5,7 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import {alpha, Grid, InputBase, styled } from "@mui/material";
+import { alpha, Grid, InputBase, styled } from "@mui/material";
 import { Link } from "react-router-dom";
 import { TypeProduct } from '../../shared/shareddtypes';
 import SearchIcon from '@mui/icons-material/Search';
@@ -54,41 +54,43 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 }));
 const useStyles = makeStyles({
   sizes: {
-    marginLeft:'35%',
-    marginRight:'20%',
-    marginTop:'20%',
+    marginLeft: '35%',
+    marginRight: '20%',
+    marginTop: '20%',
     width: '70%',
     height: '82%',
-    "&:hover ": { transform: "scale3d(1.05, 1.05, 1)",
+    "&:hover ": {
+      transform: "scale3d(1.05, 1.05, 1)",
       boxShadow: "-1px 1px 20px 0px rgba(0,0,0,0.9)",
+    }
   }
-} 
 });
 
 type ProductsParsed = {
   products: TypeProduct[]
 }
 
-const ShoesView = (parsed : ProductsParsed) => {
+const ShoesView = (parsed: ProductsParsed) => {
   const classes = useStyles();
-  const [productos, setProductos]=useState<TypeProduct[]>([]);
+  const [productos, setProductos] = useState<TypeProduct[]>([]);
   //Primera vez coge los productos de la BD
   const refreshProductos = async () => {
     setProductos(await getProducts());
   }
-  useEffect(()=>{
-  refreshProductos();
-  },[]);
+  useEffect(() => {
+    refreshProductos();
+  }, []);
   function filterFunction(texto: any) {
     var filter;
-    if(texto==""){
-      filter=parsed.products;
+    if (texto == "") {
+      filter = parsed.products;
     }
-    else{
-      filter=parsed.products.filter((p)=>p.nombre.startsWith(texto)); 
+    else {
+      filter = parsed.products.filter((p) => p.nombre.startsWith(texto));
     }
     setProductos(filter);
-   }
+  }
+  console.log(productos);
   let details = '/Details?id='
   return (
     <><Search color='white'>
@@ -100,10 +102,10 @@ const ShoesView = (parsed : ProductsParsed) => {
         onChange={(event: any) => {
           filterFunction(event.target.value);
         }}
-        inputProps={{ 'aria-label': 'search' }} 
-        
-        
-        />
+        inputProps={{ 'aria-label': 'search' }}
+
+
+      />
     </Search><Grid container spacing={1} columns={{ xs: 4, sm: 6, md: 7 }}>
         {productos.map(item => <Grid item xs={4} sm={2} md={2} key={item.id}>
           <Card className={classes.sizes}>

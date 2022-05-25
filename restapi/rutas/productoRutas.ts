@@ -1,12 +1,13 @@
 import express, { Request, Response } from 'express';
-import { Producto , ProductoDoc} from '../modelos/productoModelo';
+import { Producto, ProductoDoc } from '../modelos/productoModelo';
 import consultarREST from './consultarREST';
 import "dotenv/config";
 import { ObjectId } from 'mongoose';
+import { Foto } from '../modelos/fotoModelo';
 
 //Obtenemos la url de la apirest de Heroku o utilizamos localhost por defecto
 let URL_BASE = `${process.env.API_REST_URL_BASE_LOCAL}`
-if(process.env.PORT) {
+if (process.env.PORT) {
   URL_BASE = `${process.env.API_REST_URL_BASE_HEROKU}`
 }
 
@@ -22,9 +23,9 @@ router.get('/producto/detalles/colores/:referencia', async (req: Request, res: R
 router.get('/producto/detalles/foto/:referencia', async (req: Request, res: Response) => {
   const ref = req.params.referencia;
   const productos = await Producto.find({ referencia: ref });
-  if (productos.length == 1){
+  if (productos.length == 1) {
     //Recuperamos todas las fotos asociadas a este producto
-    const fotos = await consultarREST(URL_BASE +'foto/' + productos[0].id)
+    const fotos = await consultarREST(URL_BASE + 'foto/' + productos[0].id)
     return res.json(fotos);
   }
   return res.json();
@@ -34,9 +35,9 @@ router.get('/producto/detalles/foto/:referencia', async (req: Request, res: Resp
 router.get('/producto/detalles/fotos/:referencia', async (req: Request, res: Response) => {
   const ref = req.params.referencia;
   const productos = await Producto.find({ referencia: ref });
-  if (productos.length == 1){
+  if (productos.length == 1) {
     //Recuperamos todas las fotos asociadas a este producto
-    const fotos = await consultarREST(URL_BASE +'fotos/' + productos[0].id)
+    const fotos = await consultarREST(URL_BASE + 'fotos/' + productos[0].id)
     return res.json(fotos);
   }
   return res.json();
@@ -47,9 +48,9 @@ router.get('/producto/detalles/fotos/:referencia', async (req: Request, res: Res
 router.get('/producto/detalles/tallas/:referencia', async (req: Request, res: Response) => {
   const ref = req.params.referencia;
   const productos = await Producto.find({ referencia: ref });
-  if (productos.length == 1){
+  if (productos.length == 1) {
     //Recuperamos todas las tallas asociadas a este producto
-    const tallas = await consultarREST(URL_BASE +'tallas/' + productos[0].id)
+    const tallas = await consultarREST(URL_BASE + 'tallas/' + productos[0].id)
     return res.json(tallas);
   }
   return res.json();
@@ -59,9 +60,9 @@ router.get('/producto/detalles/tallas/:referencia', async (req: Request, res: Re
 router.get('/producto/detalles/tallas_disponibles/:referencia', async (req: Request, res: Response) => {
   const ref = req.params.referencia;
   const productos = await Producto.find({ referencia: ref });
-  if (productos.length == 1){
+  if (productos.length == 1) {
     //Recuperamos todas las tallas disponibles asociadas a este producto
-    const tallas = await consultarREST(URL_BASE +'tallas_disponibles/' + productos[0].id)
+    const tallas = await consultarREST(URL_BASE + 'tallas_disponibles/' + productos[0].id)
     return res.json(tallas);
   }
   return res.json();
@@ -80,21 +81,27 @@ router.get('/products/list', async (req: Request, res: Response) => {
   let resultado = new Array<TypeProduct>();
 
   const productos = await Producto.find({})
-  
-  for (var i=0; i< productos.length; i++)
-  {
-      let entrada = productos[i];
-      let salida: TypeProduct = ({ _objectId: entrada._id, id: "", nombre:"",precio:0,imagen: "" });
-      salida.id = entrada.referencia;
-      salida.nombre = entrada.marca + " " +entrada.modelo;
-      salida.precio = entrada.precio
-      //Recuperamos la imagen principal asociada a este producto
-      const foto = await consultarREST(URL_BASE +'foto/' + entrada.id) ;
-      if (foto.length != 0)
-        salida.imagen = foto[0].ruta
-      else
-        salida.imagen = "" //buscar una imagen por defecto si no hay principal
-      resultado.push(salida)
+
+  for (var i = 0; i < productos.length; i++) {
+    let entrada = productos[i];
+    let salida: TypeProduct = ({ _objectId: entrada._id, id: "", nombre: "", precio: 0, imagen: "" });
+    salida.id = entrada.referencia;
+    salida.nombre = entrada.marca + " " + entrada.modelo;
+    salida.precio = entrada.precio
+
+    const foto = await Foto
+      .find(
+        {
+          descripcion: 'principal',
+          producto: entrada.id
+        }
+      );
+    //Recuperamos la imagen principal asociada a este producto
+    if (foto.length != 0)
+      salida.imagen = foto[0].ruta
+    else
+      salida.imagen = "" //buscar una imagen por defecto si no hay principal
+    resultado.push(salida)
   }
   return res.status(200).send(resultado)
 })
@@ -116,32 +123,40 @@ router.get('/producto/detalles/:referencia', async (req: Request, res: Response)
     precio: Number;
     descripcion: String;
     imagen: String;
+    color: String;
   }
 
   let resultado = new Array<TypeProduct>();
   //Parametro referencia
   const ref = req.params.referencia;
   //Realizamos la busqueda por referencia
-  const product = await Producto.findOne({referencia: ref})
-  if(product){
+  const product = await Producto.findOne({ referencia: ref })
+  if (product) {
     let entrada = product;
-    let salida: TypeProduct = ({ _objectId: entrada._id, id: "", nombre:"",precio:0,descripcion:"",imagen: "" });
+    let salida: TypeProduct = ({ _objectId: entrada._id, id: "", nombre: "", precio: 0, descripcion: "", imagen: "", color: '' });
     salida.id = entrada.referencia;
-    salida.nombre = entrada.marca + " " +entrada.modelo;
+    salida.nombre = entrada.marca + " " + entrada.modelo;
     salida.precio = entrada.precio
     salida.descripcion = entrada.descripcion;
+    salida.color = entrada.color;
     //Recuperamos la imagen principal asociada a este producto
-    const foto = await consultarREST(URL_BASE +'foto/' + entrada.id) ;
+    const foto = await Foto
+      .find(
+        {
+          descripcion: 'principal',
+          producto: entrada.id
+        }
+      );
     if (foto.length != 0)
       salida.imagen = foto[0].ruta
     else
       salida.imagen = "" //buscar una imagen por defecto si no hay principal
     resultado.push(salida)
     return res.status(200).send(resultado)
-  } else{
+  } else {
     return res.status(500).json();
   }
-  
+
 })
 
 export { router as productoRouter }
