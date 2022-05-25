@@ -1,4 +1,4 @@
-# dede_es3a
+# dede_es3a_bis2
 
 [![Actions Status](https://github.com/pglez82/asw2122_0/workflows/CI%20for%20ASW2122/badge.svg)](https://github.com/pglez82/asw2122_0/actions)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pglez82_asw2122_0&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=pglez82_asw2122_0)
@@ -10,19 +10,15 @@
 <img src="https://miro.medium.com/max/365/1*Jr3NFSKTfQWRUyjblBSKeg.png" height="100">
 </p>
 
-Este proyecto es un ejemplo basico de un sitio web utilizando **React** con **Typescript** y un endpoint usando **NodeJS** con **express**
+Este proyecto es un ejemplo básico de un sitio web utilizando **React** con **Typescript** y un endpoint usando **NodeJS** con **express**
 ## Miembros del equipo
->* Andrés Ángel González Granda - uo68216@uniovi.es
->* Andrea Auñón Antúnez - uo277876@uniovi.es
->* Javier Lopez de Juan - uo271447@uniovi.es
->* Alejandro Del Gallego Moro - uo271411@uniovi.es
->* Sofia Suárez Fernandez - uo270149@uniovi.es
+>* Sofía Suárez Fernández - UO270149@uniovi.es
 
 ## Guia de inicio rápido
 
-<mark>Si tienes instalados node.js y npm, asegurate de actualizarlos antes de intentar construir las imagenes</mark>
+<mark>Si tienes instalados node.js y npm, asegúrate de actualizarlos antes de intentar construir las imágenes</mark>
 
-Si quieres ejecutar el proyecto necesitarás [git](https://git-scm.com/downloads), [Node.js and npm](https://www.npmjs.com/get-npm) y [Docker](https://docs.docker.com/get-docker/). Asegurate de tenerlos instalados en tu equipo. Descarga el proyecto con `git clone https://github.com/pglez82/asw2122_0`. La manera más rápìda de ejecutar todo es con Docker.
+Si quieres ejecutar el proyecto necesitarás [git](https://git-scm.com/downloads), [Node.js and npm](https://www.npmjs.com/get-npm) y [Docker](https://docs.docker.com/get-docker/). Asegúrate de tenerlos instalados en tu equipo. Descarga el proyecto con `git clone https://github.com/pglez82/asw2122_0`. La manera más rápìda de ejecutar todo es con Docker.
 
 ```bash
 docker-compose up --build
@@ -49,7 +45,7 @@ npm install
 npm start
 ```
 
-Deberias ser capaz de acceder a la aplicación en [http://localhost:3000](http://localhost:3000).
+Deberías ser capaz de acceder a la aplicación en [http://localhost:3000](http://localhost:3000).
 
 ## Mas información
 Encontrarás más información sobre el repositorio en los otros archivos README:
