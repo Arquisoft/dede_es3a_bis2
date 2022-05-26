@@ -57,19 +57,6 @@ export default function CartButons() {
   const { session } = useSession();
   const { webId } = session.info;
 
-  // ruta de redirección según estado
-  // let rutaFinalizarCompra: string;
-
-  /*
-  if (sessionStorage.getItem('user') != null) {
-    // el usuario Sí ha iniciado sesión
-    rutaFinalizarCompra = '/FormLogIn'; // log de POD
-  } else {
-    // el usuario NO ha iniciado sesión
-    rutaFinalizarCompra = '/LogInPassword'; // tiene que iniciar sesión
-  }
-  */
-
   return (
     <Container maxWidth='lg' className={classes.container}>
       <div className={classes.margen}>
@@ -83,15 +70,15 @@ export default function CartButons() {
             </Card>
             {
               webId ? (
-                <Button variant="contained" endIcon={<ShoppingCartIcon />} sx={{ bgcolor: 'black' }} size='large' to="/selecciona-centro-distribucion" component={Link}>
+                <Button variant="contained" endIcon={<ShoppingCartIcon />} sx={{ bgcolor: 'black' }} size='large' to="/SeleccionaCentroDistribucion" component={Link}>
                   Finalizar Compra
                 </Button>
-              ): (
+              ) : (
                 // <p>Debes loguearte primero</p>
                 <Typography variant='h5' color="#FFFFFF">
-                {/* no puede proceder con la compra hasta que no inicie sesión */}
-                Debes iniciar sesión para continuar
-              </Typography>
+                  {/* no puede proceder con la compra hasta que no inicie sesión */}
+                  Debes iniciar sesión para continuar
+                </Typography>
               )
             }
           </>
