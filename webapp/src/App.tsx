@@ -12,7 +12,6 @@ import FormLogIn from './components/Login/FormLogIn';
 import ProfileViewer from './components/Login/ProfileViewer';
 import SeleccionaCentroDistribucion from './components/Cart/SeleccionaCentroDistribucion';
 
-
 let productos = new Array<Product>();
 function App(): JSX.Element {
 
