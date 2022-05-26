@@ -87,7 +87,11 @@ export default function CartButons() {
                   Finalizar Compra
                 </Button>
               ): (
-                <p>Debes loguearte primero</p>
+                // <p>Debes loguearte primero</p>
+                <Typography variant='h5' color="#FFFFFF">
+                {/* no puede proceder con la compra hasta que no inicie sesión */}
+                Debes iniciar sesión para continuar
+              </Typography>
               )
             }
           </>
