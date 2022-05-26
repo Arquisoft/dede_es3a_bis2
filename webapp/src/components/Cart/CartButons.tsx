@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Card, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useSession } from '@inrupt/solid-ui-react';
 
 const useStyles = makeStyles({
   sizes: {
@@ -42,20 +43,24 @@ const useStyles = makeStyles({
   }
 });
 
-function FinishBuying() {
-  if (JSON.parse(sessionStorage.getItem('cart') as string).length > 0) {
-    sessionStorage.setItem('cart', JSON.stringify([]));
-    alert("Compra realizada");
-    window.location.reload();
-  }
-}
+// function FinishBuying() {
+//   if (JSON.parse(sessionStorage.getItem('cart') as string).length > 0) {
+//     sessionStorage.setItem('cart', JSON.stringify([]));
+//     alert("Compra realizada");
+//     window.location.reload();
+//   }
+// }
 
 export default function CartButons() {
   const classes = useStyles();
 
-  // ruta de redirección según estado
-  let rutaFinalizarCompra: string;
+  const { session } = useSession();
+  const { webId } = session.info;
 
+  // ruta de redirección según estado
+  // let rutaFinalizarCompra: string;
+
+  /*
   if (sessionStorage.getItem('user') != null) {
     // el usuario Sí ha iniciado sesión
     rutaFinalizarCompra = '/FormLogIn'; // log de POD
@@ -63,6 +68,7 @@ export default function CartButons() {
     // el usuario NO ha iniciado sesión
     rutaFinalizarCompra = '/LogInPassword'; // tiene que iniciar sesión
   }
+  */
 
   return (
     <Container maxWidth='lg' className={classes.container}>
@@ -75,9 +81,15 @@ export default function CartButons() {
                 Precio sin gastos de envío: {calcularPrecioSinGastos()} €
               </Typography>
             </Card>
-            <Button variant="contained" endIcon={<ShoppingCartIcon />} sx={{ bgcolor: 'black' }} size='large' to={rutaFinalizarCompra} component={Link}>
-              LogIn para Finalizar Compra
-            </Button>
+            {
+              webId ? (
+                <Button variant="contained" endIcon={<ShoppingCartIcon />} sx={{ bgcolor: 'black' }} size='large' to="/selecciona-centro-distribucion" component={Link}>
+                  Finalizar Compra
+                </Button>
+              ): (
+                <p>Debes loguearte primero</p>
+              )
+            }
           </>
         ) : ([
           <Card className={classes.carritoVacio}>

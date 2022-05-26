@@ -39,3 +39,9 @@ export type Talla = {
   cantidad: number;
   producto: string;
 }
+
+export type Distribuidor = {
+  nombre: string;
+  latitud: number;
+  longitud: number;
+}

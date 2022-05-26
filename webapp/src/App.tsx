@@ -10,7 +10,6 @@ import { useState } from 'react';
 import { SessionProvider } from '@inrupt/solid-ui-react';
 import FormLogIn from './components/Login/FormLogIn';
 import ProfileViewer from './components/Login/ProfileViewer';
-import LogInPassword from './components/Login/LogInPassword';
 
 let productos = new Array<Product>();
 function App(): JSX.Element {
@@ -28,7 +27,6 @@ function App(): JSX.Element {
             <Route path="/FormLogIn" element={<FormLogIn />} />
             <Route path="/ProfileViewer" element={<ProfileViewer />} />
             <Route path="/Requests" element={<Requests />} />
-            <Route path="/LogInPassword" element={<LogInPassword />}></Route>
           </Routes>
           <Footer />
         </Router>

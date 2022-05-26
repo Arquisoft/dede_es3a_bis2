@@ -1,4 +1,4 @@
-import { User, Product, TypeProduct, Foto, Talla } from '../shared/shareddtypes';
+import { User, Product, TypeProduct, Foto, Talla, Distribuidor } from '../shared/shareddtypes';
 
 
 //Obtenemos la url de la apirest de Heroku o utilizamos localhost por defecto
@@ -47,12 +47,18 @@ export async function getTallas(productId: string): Promise<Talla[]> {
   return response.json();
 }
 
-export async function getUsuario(nombreUsuario: string, contraseña: string): Promise<User | null> {
-  const apiPetition: string = apiEndPoint + '/users/login/' + nombreUsuario + '/' + contraseña;
-  const response: Response = await fetch(apiPetition);
-  if (response.status == 500) {
-    return null;
-  }
-  return response.json();
+// export async function getUsuario(nombreUsuario: string, contraseña: string): Promise<User | null> {
+//   const apiPetition: string = apiEndPoint + '/users/login/' + nombreUsuario + '/' + contraseña;
+//   const response: Response = await fetch(apiPetition);
+//   if (response.status == 500) {
+//     return null;
+//   }
+//   return response.json();
 
+// }
+
+export async function getDistribuidores(): Promise<Distribuidor[]> {
+  const apiPetition: string = apiEndPoint + 'distribuidores';
+  const response: Response = await fetch(apiPetition);
+  return response.json();
 }
