@@ -30,7 +30,9 @@
     "simple-react-footer": "^1.0.2",
     "styled-components": "^5.3.3",
     "typescript": "^4.5.4",
-    "web-vitals": "^2.1.2"
+    "web-vitals": "^2.1.2",
+    "react-scripts": "5.0.0",
+    "ts-node-dev": "^1.1.8"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -69,9 +71,7 @@
     "jest-cucumber": "^3.0.1",
     "jest-puppeteer": "^6.0.3",
     "puppeteer": "^13.0.1",
-    "react-scripts": "5.0.0",
     "start-server-and-test": "^1.14.0",
-    "ts-jest": "^27.1.2",
-    "ts-node-dev": "^1.1.8"
+    "ts-jest": "^27.1.2"
   }
 }
