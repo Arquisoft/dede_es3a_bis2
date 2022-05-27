@@ -29,6 +29,7 @@ function App(): JSX.Element {
             <Route path="/ProfileViewer" element={<ProfileViewer />} />
             <Route path="/Requests" element={<Requests />} />
             <Route path="/SeleccionaCentroDistribucion" element={<SeleccionaCentroDistribucion />} />
+
           </Routes>
           <Footer />
         </Router>

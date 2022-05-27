@@ -1,9 +1,11 @@
 import { Card, makeStyles } from "@material-ui/core";
-import { Box, CardContent, Typography } from "@mui/material";
+import { Box, Button, CardContent, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { getDistribuidores } from "../../api/api";
 import { Distribuidor } from "../../shared/shareddtypes";
-import GetGastosDeEnvio from "./GastosDeEnvio";
+import GetGastosDeEnvio, { Comprar } from "./GastosDeEnvio";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
 
 const useStyles = makeStyles({
   sizes: {
@@ -54,20 +56,20 @@ const SeleccionaCentroDistribucion = () => {
           <b>DISTRIBUIDORES DISPONIBLES</b>
         </Typography>
 
-        {distribuidores.map(dis =>
-          <Card className={classes.sizes}>
+        {distribuidores.map((dis: Distribuidor) =>
+          <Card className={classes.sizes} key={dis.nombre}>
             <CardContent>
+              {/* mostrar nombre de cada distribuidor */}
               <Typography variant="h6">
                 <b>{dis.nombre}</b>
               </Typography>
-              <Typography variant="h6">
-                Gastos de envío: {() => GetGastosDeEnvio(dis)} €
-              </Typography>
+              {/* mostrar gastos de envío de cada distribuidor */}
+
+              {/* Comprar */}
+              <Button variant="contained" endIcon={<ShoppingCartIcon />} size="large" onClick={Comprar} href={window.location.protocol + '//' + window.location.host + '/'}>Comprar</Button>
             </CardContent>
           </Card>
         )}
-
-
       </div>
     </Box>
   );

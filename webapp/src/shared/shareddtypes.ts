@@ -2,7 +2,7 @@ import { ObjectId } from 'mongoose';
 
 export type User = {
   nombreUsuario: string;
-  contraseña:string;
+  contraseña: string;
 }
 
 export type Product = {
@@ -44,4 +44,17 @@ export type Distribuidor = {
   nombre: string;
   latitud: number;
   longitud: number;
+}
+
+export type Pedido = {
+  usuario: string;
+  precio: number;
+  contenido: Array<string>;
+}
+
+export type TypePedido = {
+  _objectId: ObjectId;
+  usuario: string;
+  precio: number;
+  contenido: Array<string>;
 }
