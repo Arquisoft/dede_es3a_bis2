@@ -8,29 +8,32 @@ function ConvertirARadianes(grados: number): number {
 
 // Calcula el precio total (precio del carrito + gastos de envio)
 export async function CalcularGastos(direccionUsuario: string, distribuidor: Distribuidor) {
-    let precioCarrito = Number(sessionStorage.getItem('precioCarrito'));
+    let precioCarrito = Number(sessionStorage.getItem('precioFinal'));
     let distancia = await CalcularDistancia(direccionUsuario, distribuidor);
     return Number((precioCarrito + distancia).toFixed(2));
 }
 
-export async function CalcularDistancia(direccionUsuario: string, distribuidor: Distribuidor) {
+export async function CalcularDistancia(direccionUsuario: string, distribuidor: Distribuidor): Promise<number> {
     if (direccionUsuario != "") {
         const coordenadas = await MapaCoordenadas(direccionUsuario);
         let radioTierra: number = 6371; // en kilometros
 
-        let latitudAlmacen = distribuidor.latitud;
-        let longitudAlmacen = distribuidor.longitud;
-        let latitud = coordenadas.features[0].geometry.coordinates[1];
-        let longitud = coordenadas.features[0].geometry.coordinates[0];
-        let gradosLatitud: number = ConvertirARadianes(latitud - latitudAlmacen);
-        let gradosLongitud: number = ConvertirARadianes(longitud - longitudAlmacen);
+        // obtener coordenadas del distribuidor
+        let latitudDistribuidor = distribuidor.latitud;
+        let longitudDistribuidor = distribuidor.longitud;
 
-        latitudAlmacen = ConvertirARadianes(latitudAlmacen);
-        latitud = ConvertirARadianes(latitud);
+        // obtener coordenadas del usuario
+        let latitudUsuario = coordenadas.features[0].geometry.coordinates[1];
+        let longitudUsuario = coordenadas.features[0].geometry.coordinates[0];
 
-        let x: number = Math.sin(gradosLatitud / 2) * Math.sin(gradosLatitud / 2) + Math.sin(gradosLongitud / 2) * Math.cos(gradosLongitud / 2) * Math.cos(latitud);
-        let y: number = 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
-        return Math.round(radioTierra * y * 0.3 * 100) / 100;
+        let dLat = ConvertirARadianes(latitudDistribuidor - latitudUsuario);
+        let dLong = ConvertirARadianes(longitudDistribuidor - longitudUsuario);
+
+        let a: number = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(ConvertirARadianes(latitudUsuario)) * Math.cos(ConvertirARadianes(latitudDistribuidor)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
+        let c: number = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        let result = Math.round(radioTierra * c * 0.3 * 100) / 100;
+        return result;
     } else {
         return 0;
     }

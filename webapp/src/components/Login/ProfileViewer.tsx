@@ -69,7 +69,6 @@ const ProfileViewer = () => {
     region: '',
     pais: ''
   } as Address);
-  console.log(addresses);
 
   useEffect(() => {
     const loadAddresses = async () => setAddresses(await getDireccion(session.info.webId!!));

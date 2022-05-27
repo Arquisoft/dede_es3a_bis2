@@ -43,14 +43,6 @@ const useStyles = makeStyles({
   }
 });
 
-// function FinishBuying() {
-//   if (JSON.parse(sessionStorage.getItem('cart') as string).length > 0) {
-//     sessionStorage.setItem('cart', JSON.stringify([]));
-//     alert("Compra realizada");
-//     window.location.reload();
-//   }
-// }
-
 export default function CartButons() {
   const classes = useStyles();
 
@@ -70,11 +62,11 @@ export default function CartButons() {
             </Card>
             {
               webId ? (
+                // tiene sesión iniciada, puede continuar con la compra
                 <Button variant="contained" endIcon={<ShoppingCartIcon />} sx={{ bgcolor: 'black' }} size='large' to="/SeleccionaCentroDistribucion" component={Link}>
-                  Finalizar Compra
+                  Continuar con la Compra
                 </Button>
               ) : (
-                // <p>Debes loguearte primero</p>
                 <Typography variant='h5' color="#FFFFFF">
                   {/* no puede proceder con la compra hasta que no inicie sesión */}
                   Debes iniciar sesión para continuar
@@ -86,7 +78,7 @@ export default function CartButons() {
           <Card className={classes.carritoVacio}>
             <Typography variant="h5">
               {/* el carrito está vacío, no hay nada que calcular */}
-              Tu carrito de compra está vacío
+              Tu carrito de compra está vacío.
             </Typography>
           </Card>
         ])

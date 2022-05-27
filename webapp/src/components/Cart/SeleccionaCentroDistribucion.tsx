@@ -5,6 +5,13 @@ import { getDistribuidores } from "../../api/api";
 import { Distribuidor } from "../../shared/shareddtypes";
 import GetGastosDeEnvio, { Comprar } from "./GastosDeEnvio";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { VCARD } from "@inrupt/lit-generated-vocab-common";
+import { getSolidDataset, getThing, getUrl, Thing, getStringNoLocale } from "@inrupt/solid-client";
+import { useSession } from "@inrupt/solid-ui-react";
+import React from "react";
+import { CalcularGastos } from "./DireccionEnvio";
+import Nav from "../Fragments/Nav";
+import { useNavigate } from 'react-router-dom';
 
 
 const useStyles = makeStyles({
@@ -37,41 +44,60 @@ const useStyles = makeStyles({
 
 const SeleccionaCentroDistribucion = () => {
   const classes = useStyles();
+  const { session } = useSession();
+  const nav = useNavigate();
 
   const [distribuidores, setDistribuidores] = useState([] as Distribuidor[]);
 
   // recuperar distribuidores de la base de datos
   const loadDistribuidores = async () => {
-    setDistribuidores(await getDistribuidores());
+    const distribuidores = await getDistribuidores();
+    for (let dist of distribuidores) {
+      let gastos:number = await GetGastosDeEnvio(dist, session.info.webId!!);
+      dist.gastos = gastos;
+    }
+
+    setDistribuidores(distribuidores);
   }
   useEffect(() => {
     loadDistribuidores();
   }, []);
 
+  const HacerComprar = (dis:Distribuidor) => {
+    Comprar(session.info.webId!!, dis.gastos);
+    nav('/Requests');
+  }
+
 
   return (
-    <Box>
-      <div>
-        <Typography variant="h3" color="#FFFFFF">
-          <b>DISTRIBUIDORES DISPONIBLES</b>
-        </Typography>
+    <div>
+      <Nav />
+      <Box>
+        <div>
+          <Typography variant="h3" color="#FFFFFF">
+            <b>DISTRIBUIDORES DISPONIBLES</b>
+          </Typography>
 
-        {distribuidores.map((dis: Distribuidor) =>
-          <Card className={classes.sizes} key={dis.nombre}>
-            <CardContent>
-              {/* mostrar nombre de cada distribuidor */}
-              <Typography variant="h6">
-                <b>{dis.nombre}</b>
-              </Typography>
-              {/* mostrar gastos de envío de cada distribuidor */}
+          {distribuidores.map((dis: Distribuidor) =>
+            <Card className={classes.sizes} key={dis.nombre}>
+              <CardContent>
+                {/* mostrar nombre de cada distribuidor */}
+                <Typography variant="h6">
+                  <b>{dis.nombre}</b>
+                </Typography>
+                {/* mostrar gastos de envío de cada distribuidor */}
+                <Typography variant='h6'>
+                  Precio + Gastos de envío: {dis.gastos} €
+                </Typography>
+                {/* Comprar */}
+                <Button variant="contained" endIcon={<ShoppingCartIcon />} size="large" onClick={() => HacerComprar(dis)}>Comprar</Button>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+      </Box>
+    </div>
 
-              {/* Comprar */}
-              <Button variant="contained" endIcon={<ShoppingCartIcon />} size="large" onClick={Comprar} href={window.location.protocol + '//' + window.location.host + '/'}>Comprar</Button>
-            </CardContent>
-          </Card>
-        )}
-      </div>
-    </Box>
   );
 
 }

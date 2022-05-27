@@ -1,7 +1,4 @@
 import express, { Request, Response} from 'express';
-import { Talla } from '../modelos/tallaModelo';
-import mongoose from 'mongoose';
-import { Producto } from '../modelos/productoModelo';
 import { Distribuidor } from '../modelos/distribuidorModelo';
 
 const router = express.Router();

@@ -13,7 +13,7 @@ import { useSession } from '@inrupt/solid-ui-react';
 const ListRequests = () => {
   const [pedidos, setPedidos] = React.useState<TypePedido[]>([]);
   const { session } = useSession();
-  const webId = session.info.webId!!.split('#')[0];
+  const webId = session.info.webId!!;
 
   const reloadPedidos = async () => {
     setPedidos(await getPedidos(webId));

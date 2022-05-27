@@ -1,13 +1,11 @@
 import { VCARD } from "@inrupt/lit-generated-vocab-common";
 import { getSolidDataset, getStringNoLocale, getThing, getUrl, Thing } from "@inrupt/solid-client";
-import { Card, Container, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { CalcularGastos } from "./DireccionEnvio";
 import { Distribuidor, Pedido, TypeProduct } from "../../shared/shareddtypes";
 import { makeStyles } from '@material-ui/core/styles';
 import { useSession } from '@inrupt/solid-ui-react';
 import { añadirPedido } from "../../api/api";
-import { Session } from "@inrupt/solid-client-authn-browser";
 
 const useStyles = makeStyles({
     sizes: {
@@ -37,8 +35,6 @@ const useStyles = makeStyles({
     }
 });
 
-let costeConGastos: number = 0;
-
 // el webId es session.info
 async function GetDireccionUsuario(webId: string): Promise<string> {
     let perfilURI = webId.split("#")[0];
@@ -58,56 +54,31 @@ async function GetDireccionUsuario(webId: string): Promise<string> {
     return direccionUsuario;
 }
 
-
-function GetGastosDeEnvio(distribuidor: Distribuidor): number {
-    const classes = useStyles();
-    const { session } = useSession();
-    const [direccionUsuario, setDireccionUsuario] = React.useState<string>("");
-    const [gastosDeEnvio, setGastosDeEnvio] = React.useState<number>(0);
+async function GetGastosDeEnvio(distribuidor: Distribuidor, webId: string): Promise<number> {
 
     // recuperamos la direccion del usuario
-    const getDireccion = async () => setDireccionUsuario(await GetDireccionUsuario(session.info.webId!!));
+    const direccionUsuario = await GetDireccionUsuario(webId);
 
-    const calcular = async () => {
-        // calculamos los gastos de envio a esa direccion
-        let gastosDeEnvio = await CalcularGastos(direccionUsuario, distribuidor);
-        setGastosDeEnvio(gastosDeEnvio);
-        costeConGastos = gastosDeEnvio;
-    };
-
-    useEffect(() => {
-        getDireccion();
-        calcular();
-    });
+    // calculamos los gastos de envio a esa direccion
+    const gastosDeEnvio = await CalcularGastos(direccionUsuario, distribuidor);
 
     return gastosDeEnvio;
-    // return(
-    //     <Container>
-    //         <div className={classes.margen}>
-    //             <Card>
-    //                 <Typography variant="h6">
-    //                     Precio total (gastos de envío incluidos): {gastosDeEnvio} €
-    //                 </Typography>
-    //             </Card>
-    //         </div>
-    //     </Container>
-    // );
 }
+
 export default GetGastosDeEnvio;
 
-export function Comprar() {
-    const { session } = useSession();
+export function Comprar(webId:string, costeConGastos: number) {
     if (JSON.parse(sessionStorage.getItem('cart') as string).length > 0) {
         // crear pedido
         const cart = JSON.parse(sessionStorage.getItem('cart') as string);
         const productos: Array<string> = cart.map((producto: TypeProduct) => producto.nombre);
         // seleccionar nombre producto
-        const pedido: Pedido = { usuario: (sessionStorage.getItem('user') as string), precio: costeConGastos, contenido: productos };
+        const pedido: Pedido = { usuario: webId!!, precio: costeConGastos, contenido: productos };
         añadirPedido(pedido);
         // vaciar carrito
         sessionStorage.setItem('cart', JSON.stringify([]));
-        
-        sessionStorage.setItem(session.info.webId!!.split('#')[0], JSON.stringify([]));
+
+        sessionStorage.setItem(webId!!.split('#')[0], JSON.stringify([]));
         alert("Usted ha realizado la compra. Se procederá al envío correspondiente.");
         // window.location.reload();
     }

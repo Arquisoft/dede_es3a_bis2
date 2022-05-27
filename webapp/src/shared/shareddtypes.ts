@@ -44,6 +44,7 @@ export type Distribuidor = {
   nombre: string;
   latitud: number;
   longitud: number;
+  gastos: number;
 }
 
 export type Pedido = {

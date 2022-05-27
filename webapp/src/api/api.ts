@@ -66,7 +66,7 @@ export async function añadirPedido(pedido: Pedido): Promise<Pedido> {
 }
 
 export async function getPedidos(usuario: string): Promise<TypePedido[]> {
-  const apiPetition: string = apiEndPoint + 'pedidos/list/' + usuario;
+  const apiPetition: string = apiEndPoint + 'pedidos/list/' + encodeURIComponent(usuario);
   const response: Response = await fetch(apiPetition);
   return response.json();
 }
