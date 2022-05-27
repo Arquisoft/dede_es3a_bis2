@@ -4,7 +4,7 @@ import { User, Product, TypeProduct, Foto, Talla, Distribuidor, Pedido, TypePedi
 //Obtenemos la url de la apirest de Heroku o utilizamos localhost por defecto
 let apiEndPoint: string = 'http://localhost:8080/'
 if (process.env.PORT) {
-  apiEndPoint = 'http://dede-es3a-restapi.herokuapp.com/'
+  apiEndPoint = 'http://dede-es3a-bis2-restapi.herokuapp.com/'
 }
 
 export async function addUser(user: User): Promise<boolean> {
