@@ -32,7 +32,7 @@ const RightDetails = (parsed: parsedProduct) => {
     } else {
       var newCart: string = cart.substring(0, cart.length - 1) + JSON.stringify(item) + ']';
     }
-    console.log(item);
+    
     sessionStorage.setItem('cart', newCart);
     alert("Artículo: \"" + parsed.product[0].nombre + "\" añadido al carrito.");
   }
