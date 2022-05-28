@@ -10,7 +10,7 @@
 
 Accesos rápidos
 * [Wiki](https://github.com/Arquisoft/dede_es3a_bis2/wiki)
-* [Decisiones arquitectónicas] 
+* [Decisiones arquitectónicas](https://github.com/Arquisoft/dede_es3a_bis2/wiki/Decisiones-arquitect%C3%B3nicas) 
 * [Issues](https://github.com/Arquisoft/dede_es3a_bis2/issues)
 * [Despliegue](https://dede-es3a-bis2.herokuapp.com/)
 * [Documentación]
