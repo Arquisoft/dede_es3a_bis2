@@ -9,12 +9,12 @@
 </h1>
 
 Accesos rápidos
-* [Wiki] (https://github.com/Arquisoft/dede_es3a_bis2/wiki)
+* [Wiki](https://github.com/Arquisoft/dede_es3a_bis2/wiki)
 * [Decisiones arquitectónicas] 
-* [Issues] (https://github.com/Arquisoft/dede_es3a_bis2/issues)
-* [Despliegue] (https://dede-es3a-bis2.herokuapp.com/)
+* [Issues](https://github.com/Arquisoft/dede_es3a_bis2/issues)
+* [Despliegue](https://dede-es3a-bis2.herokuapp.com/)
 * [Documentación]
-* [Presentación]
+* [Presentación](https://unioviedo-my.sharepoint.com/:p:/g/personal/uo270149_uniovi_es/ER2xMsBN7pNMoVWYBRidYX0BmZuvGoTxUGiVaqTuipoShg?e=o4GXwT)
 
 <p float="left">
 <img src="https://blog.wildix.com/wp-content/uploads/2020/06/react-logo.jpg" height="100">
