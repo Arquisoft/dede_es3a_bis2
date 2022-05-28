@@ -61,6 +61,6 @@ Deberías ser capaz de acceder a la aplicación en [http://localhost:3000](http:
 
 ## Mas información
 Encontrarás más información sobre el repositorio en los otros archivos README:
-- Documentación: https://github.com/Arquisoft/dede_es3a/tree/master/docs
-- Webapp: https://github.com/Arquisoft/dede_es3a/tree/master/webapp
-- Restapi: https://github.com/Arquisoft/dede_es3a/tree/master/restapi
+- Documentación: https://github.com/Arquisoft/dede_es3a_bis2/tree/master/docs
+- Webapp: https://github.com/Arquisoft/dede_es3a_bis2/tree/master/webapp
+- Restapi: https://github.com/Arquisoft/dede_es3a_bis2/tree/master/restapi
