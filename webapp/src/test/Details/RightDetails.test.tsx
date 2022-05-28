@@ -18,7 +18,7 @@ test('RightDetails working properly', async () => {
     const { getByText, getByTitle } = render(<RightDetails product={producto}></RightDetails>);
 
     expect(getByText(producto[0].nombre)).toBeInTheDocument();
-    expect(getByText(producto[0].precio)).toBeInTheDocument();
+    expect(getByText(producto[0].precio + " €")).toBeInTheDocument();
     expect(getByText(producto[0].descripcion)).toBeInTheDocument();
     expect(getByText("Color")).toBeInTheDocument();
     expect(getByText("Blanco")).toBeInTheDocument();

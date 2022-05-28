@@ -3,5 +3,5 @@ import { BrowserRouter } from "react-router-dom"
 import Cart from "../../components/Cart/Cart"
 
 test('Cart working properly', async () => {
-    render(<BrowserRouter><Cart></Cart></BrowserRouter>);
+    render(<BrowserRouter><Cart/></BrowserRouter>);
 })

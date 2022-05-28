@@ -58,7 +58,7 @@ const FormLogIn = () => {
                   endAdornment: (
                     <LoginButton oidcIssuer={idp} redirectUrl={window.location.protocol + '//' + window.location.host + '/ProfileViewer'}>
                       <Button variant="contained" color="primary">
-                        LogIn
+                        Login
                       </Button>
                     </LoginButton>
                   ),

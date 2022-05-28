@@ -5,4 +5,6 @@ test('ShoesCart working properly', async () => {
     const { getByText } = render(<ShoesCart></ShoesCart>);
 
     expect(getByText("PRODUCTOS EN EL CARRITO")).toBeInTheDocument();
+    expect(getByText("Carrito vacío.")).toBeInTheDocument();
+
 })

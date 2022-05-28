@@ -4,7 +4,6 @@ import FormLogIn from "../../components/Login/FormLogIn"
 test('FormLogin working properly', async () => {
     const { getByText } = render(<FormLogIn></FormLogIn>);
 
-    expect(getByText("LogIn")).toBeInTheDocument();
-    expect(getByText("Identity Provider")).toBeInTheDocument();
+    expect(getByText("Login")).toBeInTheDocument();
     expect(getByText("¿No tienes una cuenta? Regístrate aqui")).toBeInTheDocument();
 })
