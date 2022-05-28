@@ -4,6 +4,18 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pglez82_asw2122_0&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=pglez82_asw2122_0)
 [![codecov](https://codecov.io/gh/pglez82/asw2122_0/branch/master/graph/badge.svg?token=VN4XG9NTRO)](https://codecov.io/gh/pglez82/asw2122_0)
 
+<h1>
+ ¡Tu tienda de playeros!
+</h1>
+
+Accesos rápidos
+* [Wiki](https://github.com/Arquisoft/dede_es3a_bis2/wiki)
+* [Decisiones arquitectónicas](https://github.com/Arquisoft/dede_es3a_bis2/wiki/Decisiones-arquitect%C3%B3nicas) 
+* [Issues](https://github.com/Arquisoft/dede_es3a_bis2/issues)
+* [Despliegue](https://dede-es3a-bis2.herokuapp.com/)
+* [Documentación]
+* [Presentación](https://unioviedo-my.sharepoint.com/:p:/g/personal/uo270149_uniovi_es/ER2xMsBN7pNMoVWYBRidYX0BmZuvGoTxUGiVaqTuipoShg?e=o4GXwT)
+
 <p float="left">
 <img src="https://blog.wildix.com/wp-content/uploads/2020/06/react-logo.jpg" height="100">
 <img src="https://miro.medium.com/max/1200/0*RbmfNyhuBb8G3LWh.png" height="100">
@@ -49,6 +61,6 @@ Deberías ser capaz de acceder a la aplicación en [http://localhost:3000](http:
 
 ## Mas información
 Encontrarás más información sobre el repositorio en los otros archivos README:
-- Documentación: https://github.com/Arquisoft/dede_es3a/tree/master/docs
-- Webapp: https://github.com/Arquisoft/dede_es3a/tree/master/webapp
-- Restapi: https://github.com/Arquisoft/dede_es3a/tree/master/restapi
+- Documentación: https://github.com/Arquisoft/dede_es3a_bis2/tree/master/docs
+- Webapp: https://github.com/Arquisoft/dede_es3a_bis2/tree/master/webapp
+- Restapi: https://github.com/Arquisoft/dede_es3a_bis2/tree/master/restapi
