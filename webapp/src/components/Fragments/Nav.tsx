@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
-import { AccountCircle} from '@mui/icons-material';
+import { AccountCircle } from '@mui/icons-material';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
@@ -17,11 +17,11 @@ import { useSession } from '@inrupt/solid-ui-react';
 const useStyle = makeStyles({
   stickToBottom: {
     background: "linear-gradient(45deg, #000000 30%, #FFFFFF 70%)",
-    borderBottomLeftRadius:'15px',
-    borderBottomRightRadius:'15px',
+    borderBottomLeftRadius: '15px',
+    borderBottomRightRadius: '15px',
   },
   colorButtom: {
-    color:'black',
+    color: 'black',
   },
 });
 
@@ -39,7 +39,7 @@ export default function MenuAppBar() {
     setAnchorEl(null);
   };
 
-  const {session, logout} = useSession();
+  const { session, logout } = useSession();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -54,7 +54,7 @@ export default function MenuAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          
+
           <Typography
             variant="h6"
             noWrap
@@ -64,19 +64,21 @@ export default function MenuAppBar() {
           </Typography>
           {auth && (
             <div>
-              <IconButton 
+              <IconButton
                 to='/'
                 component={Link}
                 size="large"
                 className={classes.colorButtom}
+                title="Home"
               >
-                <HomeIcon/>
+                <HomeIcon />
               </IconButton>
               <IconButton
                 to='/Cart'
                 component={Link}
                 size="large"
                 className={classes.colorButtom}
+                title="Cart"
               >
                 <ShoppingCartIcon />
               </IconButton>
@@ -106,18 +108,18 @@ export default function MenuAppBar() {
                 onClose={handleClose}
               >
 
-              <MenuItem onClick={handleClose} to='/Requests'
-                component={Link} >Mis pedidos</MenuItem>
-              {!session.info.isLoggedIn ? (
+                <MenuItem onClick={handleClose} to='/Requests'
+                  component={Link} title="Mis pedidos">Mis pedidos</MenuItem>
+                {!session.info.isLoggedIn ? (
                   <MenuItem onClick={handleClose} to='/FormLogIn'
-                  component={Link} >Login</MenuItem>
-              ): ([
-                <MenuItem onClick={handleClose} to='/ProfileViewer'
-                component={Link} >Profile</MenuItem> ,
-                <MenuItem onClick={handleClose} to='/FormLogIn'
-                component={Link} >LogOut</MenuItem>
-              ]
-              )}
+                    component={Link} title="Login">Login</MenuItem>
+                ) : ([
+                  <MenuItem onClick={handleClose} to='/ProfileViewer'
+                    component={Link} title="Profile">Profile</MenuItem>,
+                  <MenuItem onClick={handleClose} to='/FormLogIn'
+                    component={Link} title="LogOut">LogOut</MenuItem>
+                ]
+                )}
               </Menu>
             </div>
           )}

@@ -25,14 +25,14 @@ const RightDetails = (parsed: parsedProduct) => {
   }, [setTallas, parsed]);
 
   function addToCart() {
-    const item = { "_objectId": parsed.product[0]._objectId, "id": parsed.product[0].id, "nombre": parsed.product[0].nombre, "precio": parsed.product[0].precio, "imagen": parsed.product[0].imagen, "talla": talla };
+    const item = { "_objectId": parsed.product[0]._objectId, "id": parsed.product[0].id, "nombre": parsed.product[0].nombre, "precio": parsed.product[0].precio, "talla": talla };
     var cart: string = sessionStorage.getItem('cart') as string;
     if (JSON.parse(cart).length > 0) {
       var newCart: string = cart.substring(0, cart.length - 1) + ',' + JSON.stringify(item) + ']';
     } else {
       var newCart: string = cart.substring(0, cart.length - 1) + JSON.stringify(item) + ']';
     }
-    
+
     sessionStorage.setItem('cart', newCart);
     alert("Artículo: \"" + parsed.product[0].nombre + "\" añadido al carrito.");
   }
@@ -66,7 +66,7 @@ const RightDetails = (parsed: parsedProduct) => {
         </Typography>
         <ButtonGroup color="primary" variant="outlined" aria-label="tallas">
           {tallas.map(t => (
-            <Button sx={talla == t.numero ? ({ bgcolor: 'black', color: '#FFFFFF' }) : ({ color: 'black', bgcolor: '#FFFFFF' })} onClick={() => setTalla(t.numero)}>{t.numero}</Button>
+            <Button sx={talla == t.numero ? ({ bgcolor: 'black', color: '#FFFFFF' }) : ({ color: 'black', bgcolor: '#FFFFFF' })} onClick={() => setTalla(t.numero)} title={t.numero}>{t.numero}</Button>
           ))}
         </ButtonGroup>
       </div>

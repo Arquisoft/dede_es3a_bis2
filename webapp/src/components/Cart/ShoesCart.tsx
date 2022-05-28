@@ -52,7 +52,7 @@ const ShoesCart = () => {
                   alt={item.nombre}
                   height="200px"
                   width="200px"
-                  image={item.imagen}
+                  // image={item.imagen}
                   title={item.nombre}
                 />
                 <CardContent >

@@ -1,4 +1,4 @@
-import { ObjectId } from 'mongoose';
+import { ObjectId } from 'bson';
 
 export type User = {
   nombreUsuario: string;
@@ -22,7 +22,7 @@ export type TypeProduct = {
   nombre: string;
   precio: number;
   descripcion: string;
-  imagen: string;
+  // imagen: string;
   color: string;
 }
 
