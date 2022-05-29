@@ -42,7 +42,7 @@ api.post(
 api.get(
     "/products/list",
     async (req: Request, res: Response): Promise<Response> => {
-        const productos: IProducto[] = await Productos.find({});
+        const productos: IProducto[] = await Producto.find({});
         return res.status(200).send(productos); // obtener productos de la bd
     }
 );
@@ -63,13 +63,14 @@ api.get(
     }
 )
 
-api.get('products/detalles/:referencia', async (req: Request, res: Response) => {
+api.get('/products/detalles/:referencia', async (req: Request, res: Response) => {
     type TypeProduct = {
         _objectId: ObjectId;
         id: String;
         nombre: String;
         precio: Number;
         descripcion: String;
+        referencia: String;
 
     }
     let result: TypeProduct[] = new Array<TypeProduct>();
@@ -77,11 +78,12 @@ api.get('products/detalles/:referencia', async (req: Request, res: Response) => 
     let producto = await Producto.findOne({ referencia: ref });
     if (producto) {
         let entrada: ProductoDoc = producto;
-        let salida: TypeProduct = ({ _objectId: entrada._id, id: '', nombre: '', precio: 0, descripcion: '' });
+        let salida: TypeProduct = ({ _objectId: entrada._id, id: '', nombre: '', precio: 0, descripcion: '', referencia: '' });
         salida.id = entrada.referencia;
         salida.nombre = entrada.marca + ' ' + entrada.modelo;
         salida.descripcion = entrada.descripcion;
         salida.precio = entrada.precio;
+        salida.referencia = entrada.referencia;
         result.push(salida);
         return res.status(200).send(result);
     } else {

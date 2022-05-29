@@ -24,7 +24,7 @@ describe('user ', () => {
      * Probar que podemos listar usuarios sin errores
      */
     it('can be listed', async () => {
-        const response: Response = await request(app).get("api/users/list");
+        const response: Response = await request(app).get("/api/users/list");
         expect(response.statusCode).toBe(200);
     });
 
@@ -32,8 +32,8 @@ describe('user ', () => {
      * Probar que un usuario puede ser creado a través de productService sin lanzar errores
      */
     it('can be created correctly', async () => {
-        let username: string = 'Pablo';
-        let email: string = 'gonzalezgpablo@uniovi.es';
+        let username: string = 'UO270149';
+        let email: string = 'UO270149@uniovi.es';
         const response: Response = await request(app).post('/api/users/add').send({ name: username, email: email }).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
     })
@@ -44,7 +44,7 @@ describe('producto', () => {
      * Probar que podemos listar productos sin errores
      */
     it('can be listed', async () => {
-        const response: Response = await request(app).get("api/products/list");
+        const response: Response = await request(app).get("/api/products/list");
         const productos: [] = response.body;
 
         // todo en orden
@@ -65,7 +65,6 @@ describe('producto', () => {
         expect(response.statusCode).toBe(200);
         // encuentra 1 producto con esa referencia
         expect(producto.length).toEqual(1);
-
     });
 
     /**
@@ -75,7 +74,7 @@ describe('producto', () => {
         // Referencia de un producto inexistente
         let referencia: string = "asdfghjklñ";
         // Buscamos un producto con esa referencia (inexistente)
-        const response: Response = await request(app).get('/api/products/' + referencia);
+        const response: Response = await request(app).get('/api/products/referencia' + referencia);
         // El código de respuesta debería ser 404 (no encontrado)
         expect(response.statusCode).toBe(404);
     });

@@ -3,13 +3,19 @@
  * Para iniciar la restapi usando una bd interna
  */
 
+import cors from "cors";
+
 const { MongoMemoryServer } = require("mongodb-memory-server");
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
 const mongoose = require('mongoose');
 const api = require('../api');
 
 let mongod: { start: () => any; getUri: () => any; stop: () => any; server: { close: () => any; } };
+
+const options: cors.CorsOptions = {
+    origin: ["http://localhost:3000"]
+}
 
 /**
  * Iniciar la base de datos
@@ -31,6 +37,7 @@ module.exports.startServidor = async () => {
 
     var app = express();
 
+    app.use("*", cors(options));
     app.use(express.json());
     app.use("/api", api);
 
