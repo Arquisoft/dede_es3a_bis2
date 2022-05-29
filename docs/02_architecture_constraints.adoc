@@ -12,36 +12,42 @@ el proceso del desarrollo.
 [role="arc42help"]
 ****
 .Contents
-Son las restricciones tecnicas que tendrá el equipo a lo largo del desarrollo.
+Restricciones técnicas que tendrá el equipo a lo largo del desarrollo.
 
 .Form
-Tabla con todas las restricciones técnicas junto con una breve descripción .
+Tabla con todas las restricciones técnicas junto con una breve descripción de las mismas.
 ****
+
+.Restricciones técnicas
 [options="header",cols="1,2"]
 |===
 |Restricción|Descripción
-|React| Usaremos react para la creación del Frontend de la Aplicación.
-|TypeScript| TypeScript es un lenguaje de programación tipado que se basa en JavaScript. 
-|SOLID| Solid permite a los usuarios almacenar sus datos de forma segura en almacenes de datos descentralizados llamados Pods.
-|Git| El código ha de ser subido a un repositorio remoto en GitHub.
-|PlantUML| Herramienta de código abierto que permite la creación de diagramas de forma textual.
-|Draw.io| Herramienta que permite la creación de diagramas de forma gráfica.
+|React|Desarrollo del front-end de la aplicación.
+|TypeScript|TypeScript es un lenguaje de programación, superconjunto de JavScript, que añade tipos estáticos y objetos basados en clases. 
+|SOLID|Permite a los usuarios almacenar su información en almacenes de datos descentralizados (Pods).
+|Git|Subir código a repositorio remoto en GitHub.
+|PlantUML|Herramienta de código abierto que permite la creación de diagramas a partir de un lenguaje de texto sin formato.
+|Draw.io|Herramienta de diagramación de forma gráfica.
+|MaterialUI|Biblioteca de código abierto que implementa un lenguaje visual de "materiales" de Google en sus componentes React.
+|Heroku|Plataforma utilizada para desplegar la aplicación en la nube.
 |===
 
 === Restricciones de negocio
 [role="arc42help"]
 ****
 .Contents
-Son las restricciones de negocio para el desarrollo del sistema.
+Restricciones de negocio para el desarrollo del sistema.
 
 .Form 
-Tabla con todas las restricciones de negocio junto con una breve descripción .
+Tabla con las restricciones de negocio junto con una breve descripción de las mismas.
 ****
 
+.Restricciones de negocio
 [options="header",cols="1,2"]
 |===
 |Restricción|Descripción
-|Equipo| El equipo esta formado por 5 personas con las que apenas hemos interactuado con anterioridad.
-|Horarios| Todos somos estudiantes con más asignaturas o incluso que trabaja mientras cursa esta asignatura.
-|Límite de tiempo| Cada entrega tiene una fecha de entrega bastante cercana a la anterior.
+|Equipo| El equipo está formado por 1 persona (UO270149).
+|Horarios|Soy estudiante de 4º año con más asignaturas y obligaciones.
+|Límite de tiempo|La entrega forma parte de la evaluación extraordinaria de la asignatura, el mismo día que el examen teórico.
+|Conceptos|Es necesario utilizar React, SOLID y TypeScript para el desarrollo de la aplicación.
 |===
