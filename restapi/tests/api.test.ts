@@ -83,8 +83,9 @@ describe('producto', () => {
 
 describe('pedidos', () => {
     it('can be listed', async () => {
-        let usuario = 'https://uo270149.inrupt.net/profile/card#me';
-        let response: Response = await request(app).get('/api/pedidos/list/' + usuario);
+        let usuario: string = 'https://uo270149.inrupt.net/profile/card#me';
+        let usuarioEncoded: string = encodeURIComponent(usuario);
+        let response: Response = await request(app).get('/api/pedidos/list/' + usuarioEncoded);
         let pedidos: [] = response.body;
 
         // todo en orden
