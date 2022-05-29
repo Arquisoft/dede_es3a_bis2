@@ -1,7 +1,7 @@
 [[section-technical-risks]]
 == Riesgos y deuda técnica
 
-Los riesgo durante un proceso de desarrollo están siempre presentes, no obstante, su identificación y registro son cruciales para el bienestar de cualquier proyecto. En esta sección, iremos dejando constancia de todos y cada uno de los riesgo que se hayan encontrado así como las deudas técnicas que hayan podido o puedan surgir debido a malas decisiones. Realizar esta tarea correctamente implicará un crecimiento beneficioso tanto para el proyecto como para el equipo de desarrollo.
+Los riesgos durante el desarrollo siempre están presentes, no obstante, su identificación y registro son cruciales para el bienestar de cualquier proyecto. En esta sección, quedará constancia de todos y cada uno de los riesgos que se hayan detectado así como las deudas técnicas que hayan podido o puedan surgir debido a malas decisiones. Realizar esta tarea correctamente implicará un crecimiento beneficioso tanto para el proyecto como para el equipo de desarrollo.
 
 A continuación se muestra una tabla [Table 1] en la que se irán recogiendo todos los riesgos y en la [Table 2] las deudas técnicas que se hayan ido identificando a lo largo del proceso de desarrollo. Están ordenados de mayor a menor prioridad.
 
@@ -9,7 +9,10 @@ A continuación se muestra una tabla [Table 1] en la que se irán recogiendo tod
 [options="header",cols="1,2,3"]
 |===
 | Riesgo | Descripción | Prioridad
-| Diagramas del proyecto | Un postulado erróneo de éstos diagramas puede dar lugar a una construcción errónea del sistema derivando en cambios cuya dificultad probablemente sea proporcional al tiempo que se haya estado desarrollando el proyecto. | Alta
+|Diagramas del proyecto|Un postulado erróneo de éstos diagramas puede dar lugar a una construcción errónea del sistema derivando en cambios cuya dificultad probablemente sea proporcional al tiempo que se haya estado desarrollando el proyecto.|Alta
+|Conocimiento SOLID|Nueva tecnología no utilizada con anterioridad.|Alta
+|Conocimiento TypeScript|Nuevo lenguaje de programación no utilizado con anterioridad.|Media
+|Fecha de entrega|Tiempo limitado para realizar el proyecto, coincide con más entregas y exámenes|Media
 |===
 
 .Lista de deudas técnicas
