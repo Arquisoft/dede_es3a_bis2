@@ -87,7 +87,7 @@ api.get('/products/detalles/:referencia', async (req: Request, res: Response) =>
         result.push(salida);
         return res.status(200).send(result);
     } else {
-        return res.status(500).json();
+        return res.status(404).json({ message: 'El producto con referencia "${ref}" no se ha encontrado' });
     }
 })
 

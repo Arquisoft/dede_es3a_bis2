@@ -74,7 +74,7 @@ describe('producto', () => {
         // Referencia de un producto inexistente
         let referencia: string = "asdfghjklñ";
         // Buscamos un producto con esa referencia (inexistente)
-        const response: Response = await request(app).get('/api/products/referencia' + referencia);
+        const response: Response = await request(app).get('/api/products/detalles/' + referencia);
         // El código de respuesta debería ser 404 (no encontrado)
         expect(response.statusCode).toBe(404);
     });
