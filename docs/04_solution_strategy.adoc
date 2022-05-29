@@ -3,8 +3,6 @@
 
 [role="arc42help"]
 ****
-.Contents
-
 Para el desarrollo de este proyecto viene impuesta como restricción el uso de React, TypeScript y SOLID. No hay imposición en cuanto a la base de datos a utilizar. Se ha decidito optar por seguir la arquitectura MERN. Es un conjunto de marcos/tecnologías utilizados para el desarrollo web de aplicaciones que consta de MongoDB, React, Express y Node.js como sus componentes.
 
 Para el Front-End se ha utilizado React, una librería desarrollada y mantenida por Facebook. El elemento más importante de React es el componente, que es en esencia una pieza de la interfaz de usuario. Al diseñar una aplicación con React, lo que estamos haciendo es crear componentes independientes y reusables que nos permiten crear interfaces de usuario más complejas.
