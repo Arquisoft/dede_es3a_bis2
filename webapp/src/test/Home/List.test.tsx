@@ -6,7 +6,7 @@ test('home List wokring', async () => {
 
     const pokemon = screen.getByAltText("Pokemon");
     expect(pokemon).toBeInTheDocument();
-    const babyYoda = screen.getByAltText("Zapatillas Baby Yooda");
+    const babyYoda = screen.getByAltText("Zapatillas Baby Yoda");
     expect(babyYoda).toBeInTheDocument();
     const style = screen.getByAltText("Style");
     expect(style).toBeInTheDocument();

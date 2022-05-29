@@ -1,8 +1,5 @@
 import request, { Response } from 'supertest';
 import { Application } from 'express';
-import { IProducto } from '../modelos/productoModelo';
-import { Types } from 'mongoose';
-import exp from 'constants';
 
 let app: Application;
 //let server: http.Server;
@@ -13,8 +10,6 @@ beforeAll(async () => {
     await servidor.startBD();
     // Iniciar el servidor
     app = await servidor.startServidor();
-    // Añadir productos al servidor
-    // servidor.añadirProductos();
 });
 
 afterAll(async () => {
@@ -63,7 +58,7 @@ describe('producto', () => {
      */
     it('can be found by reference', async () => {
         let referencia = '1';
-        let response: Response = await request(app).get('/api/products/detalles' + referencia);
+        let response: Response = await request(app).get('/api/products/detalles/' + referencia);
         let producto: [] = response.body;
 
         // todo en orden
@@ -88,7 +83,7 @@ describe('producto', () => {
 
 describe('pedidos', () => {
     it('can be listed', async () => {
-        let usuario = 'UO270149';
+        let usuario = 'https://uo270149.inrupt.net/profile/card#me';
         let response: Response = await request(app).get('/api/pedidos/list/' + usuario);
         let pedidos: [] = response.body;
 

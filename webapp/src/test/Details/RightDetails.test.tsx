@@ -15,7 +15,7 @@ test('RightDetails working properly', async () => {
         color: "Blanco"
     }];
 
-    const { getByText, getByTitle } = render(<RightDetails product={producto}></RightDetails>);
+    const { getByText } = render(<RightDetails product={producto}></RightDetails>);
 
     expect(getByText(producto[0].nombre)).toBeInTheDocument();
     expect(getByText(producto[0].precio + " €")).toBeInTheDocument();
@@ -24,8 +24,4 @@ test('RightDetails working properly', async () => {
     expect(getByText("Blanco")).toBeInTheDocument();
     expect(getByText("Tallas disponibles")).toBeInTheDocument();
     expect(getByText("Añadir al carrito")).toBeInTheDocument();
-    // expect(getByTitle("38")).toBeInTheDocument();
-    // expect(getByTitle("39")).toBeInTheDocument();
-    // expect(getByTitle("40")).toBeInTheDocument();
-    // expect(getByTitle("41")).toBeInTheDocument();
 })

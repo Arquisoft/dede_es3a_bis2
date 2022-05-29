@@ -116,7 +116,7 @@ const ShoesView = (parsed: ProductsParsed) => {
                 alt={item.nombre}
                 height='80%'
                 width="50%"
-                image={item.imagen}
+                // image={item.imagen}
                 title={item.nombre} />
               <CardContent>
                 <Typography variant='h6'>

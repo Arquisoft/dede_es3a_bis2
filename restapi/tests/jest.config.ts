@@ -5,5 +5,5 @@ export default {
     },
     collectCoverage: true,
     collectCoverageFrom: ["api.ts"],
-    testTimeout: 20000
+    testTimeout: 200000
 }
