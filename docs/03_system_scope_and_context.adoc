@@ -27,11 +27,12 @@ image:03_diagramaContextoNegocio.png["Diagrama de contexto"]
 
 	Nuestro sistema se conectará con diferentes empresas de mensajería para poder calcular los costes de envío de los pedidos.
 	
-[role="arc42help"]	
+[role="arc42help"]
+****
 === Contexto técnico
 
 La aplicación DeDe debe cumplir con los principios SOLID almacenando en PODs la información de los usuarios que la utilicen. El proveedor de este servicio de PODs será inrupt.net.
 El front-end de la aplicación está desarrollado con React, implementando componentes ya existentes o creados desde cero.
 El lenguaje de programación para el desarrollo será TypeScript.
 El back-end contará con una base de datos en MongoDB y con Node.js express se realizarán las transacciones con la misma. En ella, se almacenarán datos de los productos, fotos, pedidos realizados, etc.
-
+****
