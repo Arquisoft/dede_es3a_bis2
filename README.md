@@ -13,7 +13,7 @@ Accesos rápidos
 * [Decisiones arquitectónicas](https://github.com/Arquisoft/dede_es3a_bis2/wiki/Decisiones-arquitect%C3%B3nicas) 
 * [Issues](https://github.com/Arquisoft/dede_es3a_bis2/issues)
 * [Despliegue](https://dede-es3a-bis2.herokuapp.com/)
-* [Documentación]
+* [Documentación](https://arquisoft.github.io/dede_es3a_bis2/)
 * [Presentación](https://unioviedo-my.sharepoint.com/:p:/g/personal/uo270149_uniovi_es/ER2xMsBN7pNMoVWYBRidYX0BmZuvGoTxUGiVaqTuipoShg?e=o4GXwT)
 
 <p float="left">
