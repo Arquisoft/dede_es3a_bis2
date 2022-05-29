@@ -458,11 +458,50 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#section-system-scope-and-context">3. Alcance y Contexto del Sistema</a>
 <ul class="sectlevel2">
 <li><a href="#_contexto_de_negocio">3.1. Contexto de negocio</a></li>
-<li><a href="#_contexto_técnico">3.2. Contexto técnico</a></li>
 </ul>
 </li>
-<li><a href="#section-technical-risks">4. Riesgos y deuda técnica</a></li>
-<li><a href="#section-glossary">5. Glosario</a></li>
+<li><a href="#section-solution-strategy">4. Estrategia de la solución</a></li>
+<li><a href="#section-building-block-view">5. Vista de bloques</a>
+<ul class="sectlevel2">
+<li><a href="#_sistema_general">5.1. Sistema general</a></li>
+<li><a href="#_nivel_1">5.2. Nivel 1</a></li>
+<li><a href="#_nivel_2">5.3. Nivel 2</a></li>
+</ul>
+</li>
+<li><a href="#section-runtime-view">6. Vista de Ejecución</a>
+<ul class="sectlevel2">
+<li><a href="#_login">6.1. LogIn</a></li>
+<li><a href="#_compra">6.2. Compra</a></li>
+<li><a href="#_gastos_de_envío">6.3. Gastos de envío</a></li>
+<li><a href="#_envío">6.4. Envío</a></li>
+</ul>
+</li>
+<li><a href="#section-deployment-view">7. Vista de Despliegue</a>
+<ul class="sectlevel2">
+<li><a href="#_nivel_de_infraestructura_1">7.1. Nivel de Infraestructura 1</a></li>
+</ul>
+</li>
+<li><a href="#section-concepts">8. Conceptos Transversales (Cross-cutting)</a>
+<ul class="sectlevel2">
+<li><a href="#_modelo_del_dominio">8.1. Modelo del dominio</a></li>
+<li><a href="#_interfaz_de_usuario">8.2. Interfaz de usuario</a></li>
+<li><a href="#_optimización_de_typescript_y_css">8.3. Optimización de TypeScript y CSS</a></li>
+<li><a href="#_base_de_datos">8.4. Base de datos</a></li>
+</ul>
+</li>
+<li><a href="#section-design-decisions">9. Decisiones de Diseño</a>
+<ul class="sectlevel2">
+<li><a href="#_mongodb">9.1. MongoDb</a></li>
+<li><a href="#_git_control_de_versiones">9.2. Git - Control de versiones</a></li>
+<li><a href="#_react_front_end">9.3. React - Front-End</a></li>
+</ul>
+</li>
+<li><a href="#section-quality-scenarios">10. Requerimientos de Calidad</a>
+<ul class="sectlevel2">
+<li><a href="#_árbol_de_calidad">10.1. Árbol de calidad</a></li>
+<li><a href="#_escenarios_de_calidad">10.2. Escenarios de calidad</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -838,23 +877,28 @@ el proceso del desarrollo.</p>
 </div>
 </div>
 </div>
+<div class="sidebarblock arc42help">
+<div class="content">
+<div class="paragraph">
+<p>=== Contexto técnico</p>
 </div>
-<div class="sect2">
-<h3 id="_contexto_técnico">3.2. Contexto técnico</h3>
 <div class="paragraph">
 <p>La aplicación DeDe debe cumplir con los principios SOLID almacenando en PODs la información de los usuarios que la utilicen. El proveedor de este servicio de PODs será inrupt.net.
 El front-end de la aplicación está desarrollado con React, implementando componentes ya existentes o creados desde cero.
 El lenguaje de programación para el desarrollo será TypeScript.
 El back-end contará con una base de datos en MongoDB y con Node.js express se realizarán las transacciones con la misma. En ella, se almacenarán datos de los productos, fotos, pedidos realizados, etc.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
+</div>
+</div>
 <div style="page-break-after: always;"></div>
-<div id="section-solution-strategy" class="paragraph">
-<p>== Estrategia de la solución</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="section-solution-strategy">4. Estrategia de la solución</h2>
+<div class="sectionbody">
+<div class="sidebarblock arc42help">
+<div class="content">
 <div class="paragraph">
 <p>Para el desarrollo de este proyecto viene impuesta como restricción el uso de React, TypeScript y SOLID. No hay imposición en cuanto a la base de datos a utilizar. Se ha decidito optar por seguir la arquitectura MERN. Es un conjunto de marcos/tecnologías utilizados para el desarrollo web de aplicaciones que consta de MongoDB, React, Express y Node.js como sus componentes.</p>
 </div>
@@ -876,21 +920,23 @@ El back-end contará con una base de datos en MongoDB y con Node.js express se r
 <div class="paragraph">
 <p>La privacidad de los datos de los usuarios se garantizará con la utilización de SOLID, que es una especificación que permite a los usuarios guardar sus datos en almacenes descentralizados llamados PODs.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
+</div>
+</div>
 <div style="page-break-after: always;"></div>
-<div id="section-building-block-view" class="paragraph">
-<p>== Vista de bloques</p>
 </div>
 </div>
-</div>
-<div class="sidebarblock">
+<div class="sect1">
+<h2 id="section-building-block-view">5. Vista de bloques</h2>
+<div class="sectionbody">
+<div class="sidebarblock arc42help">
 <div class="content">
-<div class="paragraph">
-<p>=== Sistema general</p>
+
 </div>
 </div>
-</div>
+<div class="sect2">
+<h3 id="_sistema_general">5.1. Sistema general</h3>
+<div class="sidebarblock arc42help">
+<div class="content">
 <div class="paragraph">
 <p><span class="image"><img src="./images/05_diagramaGeneral.png" alt="Diagrama de contexto"></span></p>
 </div>
@@ -931,13 +977,13 @@ El back-end contará con una base de datos en MongoDB y con Node.js express se r
 </dd>
 </dl>
 </div>
-<div class="sidebarblock">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nivel_1">5.2. Nivel 1</h3>
+<div class="sidebarblock arc42help">
 <div class="content">
-<div class="paragraph">
-<p>=== Nivel 1</p>
-</div>
-</div>
-</div>
 <div class="paragraph">
 <p><span class="image"><img src="./images/05_diagramaDetalleNivel1.png" alt="Diagrama de detalle nivel 1"></span></p>
 </div>
@@ -972,13 +1018,13 @@ El back-end contará con una base de datos en MongoDB y con Node.js express se r
 </dd>
 </dl>
 </div>
-<div class="sidebarblock">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nivel_2">5.3. Nivel 2</h3>
+<div class="sidebarblock arc42help">
 <div class="content">
-<div class="paragraph">
-<p>=== Nivel 2</p>
-</div>
-</div>
-</div>
 <div class="paragraph">
 <p><span class="image"><img src="./images/05_diagramaDetalleNivel2.png" alt="Diagrama de detalle nivel 2"></span></p>
 </div>
@@ -1022,77 +1068,91 @@ El back-end contará con una base de datos en MongoDB y con Node.js express se r
 </dd>
 </dl>
 </div>
-<div class="sidebarblock">
-<div class="content">
+</div>
+</div>
 <div style="page-break-after: always;"></div>
-<div id="section-runtime-view" class="paragraph">
-<p>== Vista de Ejecución</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="section-runtime-view">6. Vista de Ejecución</h2>
+<div class="sectionbody">
 <div class="sidebarblock arc42help">
 <div class="content">
-<div class="paragraph">
-<p>=== LogIn</p>
+
 </div>
+</div>
+<div class="sect2">
+<h3 id="_login">6.1. LogIn</h3>
 <div class="paragraph">
 <p>Proceso de LogIn. El usuario debe introducir los datos en el formulario y se procederá al inicio de sesión si son correctos. Una vez hecho, se le enviará a la pantalla de inicio de la aplicación.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./images/DiagramaLogin.JPG" alt="LogIn"></span></p>
 </div>
-</div>
-</div>
-<div class="sidebarblock arc42help">
+<div class="sidebarblock">
 <div class="content">
-<div class="paragraph">
-<p>=== Compra</p>
+
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_compra">6.2. Compra</h3>
 <div class="paragraph">
 <p>Proceso de compra de un producto. El usuario debe iniciar sesión y seleccionar la talla deseada para que se añada al carrito de la compra.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./images/DiagramaCompra.png" alt="DiagramaCompra"></span></p>
 </div>
-</div>
-</div>
-<div class="sidebarblock arc42help">
+<div class="sidebarblock">
 <div class="content">
+
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gastos_de_envío">6.3. Gastos de envío</h3>
 <div class="paragraph">
-<p>=== Gastos de envío
-Proceso de cálculo de los costes de envío de un pedido. Después de que el usuario realice un pedido, la aplicación solicita al POD del usuario la dirección de envío del usuario. Con esta dirección solicita a la empresa de mensajería el importe de los gastos de envío. Una vez obtenido este importe le devuelve al usuario el importe total del pedido, con los gastos de envío incluidos. Si el usuario confirma el pedido DeDe procede a almacenarlo en la base de datos y muestra al usuario la confirmación del envío.</p>
+<p>Proceso de cálculo de los costes de envío de un pedido. Después de que el usuario realice un pedido, la aplicación solicita al POD del usuario la dirección de envío del usuario. Con esta dirección solicita a la empresa de mensajería el importe de los gastos de envío. Una vez obtenido este importe le devuelve al usuario el importe total del pedido, con los gastos de envío incluidos. Si el usuario confirma el pedido DeDe procede a almacenarlo en la base de datos y muestra al usuario la confirmación del envío.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./images/06_diagramaSecuenciaEnvio.png" alt="Cálculo de los gastos de envío"></span></p>
 </div>
-</div>
-</div>
-<div class="sidebarblock arc42help">
+<div class="sidebarblock">
 <div class="content">
+
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_envío">6.4. Envío</h3>
 <div class="paragraph">
-<p>=== Envío
-Proceso de envío al usuario del pedido desde la aplicación. Para ello, debe realizar el pedido una vez finalizado el proceso de compra.</p>
+<p>Proceso de envío al usuario del pedido desde la aplicación. Para ello, debe realizar el pedido una vez finalizado el proceso de compra.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./images/DiagramaEnvio.png" alt="Envio"></span></p>
 </div>
-</div>
-</div>
 <div class="sidebarblock">
 <div class="content">
+
+</div>
+</div>
 <div style="page-break-after: always;"></div>
-<div id="section-deployment-view" class="paragraph">
-<p>== Vista de Despliegue</p>
 </div>
 </div>
 </div>
-<div class="sidebarblock">
+<div class="sect1">
+<h2 id="section-deployment-view">7. Vista de Despliegue</h2>
+<div class="sectionbody">
+<div class="sidebarblock arc42help">
 <div class="content">
-<div class="paragraph">
-<p>=== Nivel de Infraestructura 1</p>
+
 </div>
 </div>
-</div>
+<div class="sect2">
+<h3 id="_nivel_de_infraestructura_1">7.1. Nivel de Infraestructura 1</h3>
+<div class="sidebarblock arc42help">
+<div class="content">
 <div class="paragraph">
 <p><span class="image"><img src="./images/DiagramaDespliegue.png" alt="DiagramaDespliegue"></span></p>
 </div>
@@ -1144,24 +1204,182 @@ manera más óptima.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">APIMapBox</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Utilizada para simular el envío de los pedidos.
-<strong>*</strong>*</p>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utilizada para simular el envío de los pedidos.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-concepts">8. Conceptos Transversales (Cross-cutting)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_modelo_del_dominio">8.1. Modelo del dominio</h3>
+<div class="paragraph">
+<p>DeDe es una aplicación de compra de playeros, todo está enlazado con un diagrama de Entidad-Relación (ER-Diagram):</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/DiagramaER.png" alt="ER Diagram"></span></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Table</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shoes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Playeros registrados en la tienda.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cliente que accede a la aplicación y se registra para realizar compras.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pedido</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Información del pedido para realizar el reparto.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_interfaz_de_usuario">8.2. Interfaz de usuario</h3>
+<div class="paragraph">
+<p>Para realizar la Interfaz de usuario de la aplicación se ha utilizado React.
+React es una biblioteca de Javascript de código abierto con la que se pueden crear numerosas interfaces de usuario facilitando el desarrollo de aplicaciones en una sóla página. React es mantenido por Facebook y la comunidad de software libre.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_optimización_de_typescript_y_css">8.3. Optimización de TypeScript y CSS</h3>
+<div class="paragraph">
+<p>La opción más sencilla: estilos en línea. No aporta toda la flexibilidad de CSS, pero si aporta un estilo básico con una especificidad de nivel superior. Cada elemento React HTML tiene una propiedad de estilo que permite un objeto con todo
+el estilo que hayas planteado con anterioridad.Los objetos pueden tener este aspecto:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/cssOptimization.png" alt="Example css"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_base_de_datos">8.4. Base de datos</h3>
+<div class="paragraph">
+<p>Se ha utilizado "MongoDB", por la previa experiencia de utilización en otras asignaturas. MongoDB ofrece una gran escalabilidad y flexibilidad, así como un modelo de consultas e indexación avanzado.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-design-decisions">9. Decisiones de Diseño</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_mongodb">9.1. MongoDb</h3>
+<div class="paragraph">
+<p>MongoDB es un sistema de base de datos NoSQL, orientado a documentos y
+de código abierto. En lugar de guardar los datos en tablas, tal y como se hace en las bases
+de datos relacionales, MongoDB guarda estructuras de datos BSON (una especificación
+similar a JSON) con un esquema dinámico, haciendo que la integración de los datos en
+ciertas aplicaciones sea más fácil y rápida. MongoDB es una base de datos adecuada para
+su uso en producción y con múltiples funcionalidades.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_git_control_de_versiones">9.2. Git - Control de versiones</h3>
+<div class="paragraph">
+<p>Se ha utilizado git para realizar el control de versiones. Con git, he trabajado sobre la rama "master".
+Sobre ella se han creado subramas con nombres del formato "UOXXXXXX-&lt;cambio a realizar&gt;".
+Una vez terminada esa subrama realizaremos un merge sobre master.</p>
+</div>
+<div class="paragraph">
+<p>Git es una herramienta que nos sirve de mucha utilidad para evitar conflictos.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_react_front_end">9.3. React - Front-End</h3>
+<div class="paragraph">
+<p>"User Interface" creada a partir de React, herramienta que ayuda a crear
+interfaces de usuario interactivas de forma sencilla diseñando vistas simples para cada estado
+en el que se encuentre la aplicación. Permite crear componentes encapsulados
+que manejen su propio estado, para convertirlos en interfaces de usuario más complejas.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-quality-scenarios">10. Requerimientos de Calidad</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La calidad es la habilidad de un producto o servicio de cumplir las necesidades, requisitos y expectativas del cliente. Para lograrlo, se han cumplimentando una serie de requisitos que nos permitirán alcanzar y/o aumentar esta habilidad.</p>
+</div>
+<div class="sect2">
+<h3 id="_árbol_de_calidad">10.1. Árbol de calidad</h3>
+<div class="paragraph">
+<p>En esta sección se muestra un diagrama de árbol de calidad para el sistema desarrollado. A medida que el proyecto vaya avanzando, se irá ampliando este diagrama hasta alcanzar las hojas, que serán los escenarios de calidad que describiremos en el siguiente apartado. Además, se incluirán enlaces en el árbol a los escenarios de la siguiente sección.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/DiagramaCalidad.png" alt="DiagramaArbolCalidad"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_escenarios_de_calidad">10.2. Escenarios de calidad</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Requerimiento</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seguridad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El usuario debe iniciar sesión en la aplicación para realizar compras y pedidos con credenciales válidos.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usabilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aplicación entendida, aprendida y usada siendo atractiva para el usuario</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accesibilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aplicación utilizable por el máximo n.º de personas independientemente de sus capacidades</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Escalabilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aplicación seguirá funcionando correctamente incluso cuando aumente el n.º de usuarios</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interoperabilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aplicación intercambia datos con un formato concreto</p>
 <p class="tableblock">&lt;&lt;&lt;&lt;
-<a id="section-concepts"></a>
-== Conceptos Transversales (Cross-cutting)</p>
-<p class="tableblock">=== Modelo del dominio</p>
-<p class="tableblock">DeDe es una aplicación de compra de playeros, todo está enlazado con un diagrama de Entidad-Relación (ER-Diagram):</p>
-<p class="tableblock"><span class="image"><img src="./images/DiagramaER.png" alt="ER Diagram"></span></p>
-<p class="tableblock">.Table
-[options="header",cols="1,2"]</p></td>
+<a id="section-technical-risks"></a>
+== Riesgos y deuda técnica</p>
+<p class="tableblock">Los riesgos durante el desarrollo siempre están presentes, no obstante, su identificación y registro son cruciales para el bienestar de cualquier proyecto. En esta sección, quedará constancia de todos y cada uno de los riesgos que se hayan detectado así como las deudas técnicas que hayan podido o puedan surgir debido a malas decisiones. Realizar esta tarea correctamente implicará un crecimiento beneficioso tanto para el proyecto como para el equipo de desarrollo.</p>
+<p class="tableblock">A continuación se muestra una tabla [Table 1] en la que se irán recogiendo todos los riesgos y en la [Table 2] las deudas técnicas que se hayan ido identificando a lo largo del proceso de desarrollo. Están ordenados de mayor a menor prioridad.</p>
+<p class="tableblock">.Lista de riesgos
+[options="header",cols="1,2,3"]</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>|Name|Descripción
-|Shoes|Playeros registrados en la tienda.
-|User|Cliente que accede a la aplicación y se registra para realizar compras.
-|Pedido|Información del pedido para realizar el reparto.</p>
+<p>| Riesgo | Descripción | Prioridad
+|Diagramas del proyecto|Un postulado erróneo de éstos diagramas puede dar lugar a una construcción errónea del sistema derivando en cambios cuya dificultad probablemente sea proporcional al tiempo que se haya estado desarrollando el proyecto.|Alta
+|Conocimiento SOLID|Nueva tecnología no utilizada con anterioridad.|Alta
+|Conocimiento TypeScript|Nuevo lenguaje de programación no utilizado con anterioridad.|Media
+|Fecha de entrega|Tiempo limitado para realizar el proyecto, coincide con más entregas y exámenes|Media</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1169,209 +1387,50 @@ manera más óptima.</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Interfaz de usuario</p>
-<p class="tableblock">Para realizar la Interfaz de usuario de la aplicación se ha utilizado React.
-React es una biblioteca de Javascript de código abierto con la que se pueden crear numerosas interfaces de usuario facilitando el desarrollo de aplicaciones en una sóla página. React es mantenido por Facebook y la comunidad de software libre.</p>
-<p class="tableblock">=== Optimización de TypeScript y CSS</p>
-<p class="tableblock">La opción más sencilla: estilos en línea. No aporta toda la flexibilidad de CSS, pero si aporta un estilo básico con una especificidad de nivel superior. Cada elemento React HTML tiene una propiedad de estilo que permite un objeto con todo
-el estilo que hayas planteado con anterioridad.Los objetos pueden tener este aspecto:</p>
-<p class="tableblock"><span class="image"><img src="./images/cssOptimization.png" alt="Example css"></span></p>
-<p class="tableblock">=== Base de datos</p>
-<p class="tableblock">Se ha utilizado "MongoDB", por la previa experiencia de utilización en otras asignaturas. MongoDB ofrece una gran escalabilidad y flexibilidad, así como un modelo de consultas e indexación avanzado.</p>
-<p class="tableblock">&lt;&lt;&lt;&lt;
-<a id="section-design-decisions"></a>
-== Decisiones de Diseño</p>
-<p class="tableblock">=== MongoDb
-MongoDB es un sistema de base de datos NoSQL, orientado a documentos y
-de código abierto. En lugar de guardar los datos en tablas, tal y como se hace en las bases
-de datos relacionales, MongoDB guarda estructuras de datos BSON (una especificación
-similar a JSON) con un esquema dinámico, haciendo que la integración de los datos en
-ciertas aplicaciones sea más fácil y rápida. MongoDB es una base de datos adecuada para
-su uso en producción y con múltiples funcionalidades.</p>
-<p class="tableblock">=== Git - Control de versiones</p>
-<p class="tableblock">Se ha utilizado git para realizar el control de versiones. Con git, he trabajado sobre la rama "master".
-Sobre ella se han creado subramas con nombres del formato "UOXXXXXX-&lt;cambio a realizar&gt;".
-Una vez terminada esa subrama realizaremos un merge sobre master.</p>
-<p class="tableblock">Git es una herramienta que nos sirve de mucha utilidad para evitar conflictos.</p>
-<p class="tableblock">=== React - Front-End</p>
-<p class="tableblock">"User Interface" creada a partir de React, herramienta que ayuda a crear
-interfaces de usuario interactivas de forma sencilla diseñando vistas simples para cada estado
-en el que se encuentre la aplicación. Permite crear componentes encapsulados
-que manejen su propio estado, para convertirlos en interfaces de usuario más complejas.</p>
-<p class="tableblock">&lt;&lt;&lt;&lt;
-<a id="section-quality-scenarios"></a>
-== Requerimientos de Calidad</p>
-<p class="tableblock">La calidad es la habilidad de un producto o servicio de cumplir las necesidades, requisitos y expectativas del cliente. Para lograrlo, se han cumplimentando una serie de requisitos que nos permitirán alcanzar y/o aumentar esta habilidad.</p>
-<p class="tableblock">=== Árbol de calidad</p>
-<p class="tableblock">En esta sección se muestra un diagrama de árbol de calidad para el sistema desarrollado. A medida que el proyecto vaya avanzando, se irá ampliando este diagrama hasta alcanzar las hojas, que serán los escenarios de calidad que describiremos en el siguiente apartado. Además, se incluirán enlaces en el árbol a los escenarios de la siguiente sección.</p>
-<p class="tableblock"><span class="image"><img src="./images/DiagramaCalidad.png" alt="DiagramaArbolCalidad"></span></p>
-<p class="tableblock">=== Escenarios de calidad
-[options="header",cols="1,2"]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">.Lista de deudas técnicas
+[options="header",cols="1,2,3"]</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>|Requerimiento|Descripción
-|Seguridad |El usuario debe iniciar sesión en la aplicación para realizar compras y pedidos con credenciales válidos.
-|Usabilidad|Aplicación entendida, aprendida y usada siendo atractiva para el usuario
-|Accesibilidad|Aplicación utilizable por el máximo n.º de personas independientemente de sus capacidades
-|Escalabilidad|Aplicación seguirá funcionando correctamente incluso cuando aumente el n.º de usuarios
-|Interoperabilidad|Aplicación intercambia datos con un formato concreto</p>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="section-technical-risks">4. Riesgos y deuda técnica</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Los riesgos durante el desarrollo siempre están presentes, no obstante, su identificación y registro son cruciales para el bienestar de cualquier proyecto. En esta sección, quedará constancia de todos y cada uno de los riesgos que se hayan detectado así como las deudas técnicas que hayan podido o puedan surgir debido a malas decisiones. Realizar esta tarea correctamente implicará un crecimiento beneficioso tanto para el proyecto como para el equipo de desarrollo.</p>
-</div>
-<div class="paragraph">
-<p>A continuación se muestra una tabla [Table 1] en la que se irán recogiendo todos los riesgos y en la [Table 2] las deudas técnicas que se hayan ido identificando a lo largo del proceso de desarrollo. Están ordenados de mayor a menor prioridad.</p>
+<p>| Deuda técnica | Descripción | Prioridad
+| Investigación sobre el entorno de trabajo | Una amplia búsqueda de información acerca de cómo trabajar con Typescript, Solid y React facilitará enormente el trabajo una vez iniciada la implementación ya que no será sobre territorio desconocido. | Media
+| Sopesar las decisiones tomadas | Es conveniente que todo lo que se decida con respecto a la arquitectura del proyecto sea en base a un razonamiento y no de forma aleatoria. Así evitaremos cambios de planes en el último momento que puedan llegar a afectar negativamente al proyecto. | Baja</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Lista de riesgos</caption>
 <colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 100%;">
 </colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Riesgo</th>
-<th class="tableblock halign-left valign-top">Descripción</th>
-<th class="tableblock halign-left valign-top">Prioridad</th>
-</tr>
-</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Diagramas del proyecto</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Un postulado erróneo de éstos diagramas puede dar lugar a una construcción errónea del sistema derivando en cambios cuya dificultad probablemente sea proporcional al tiempo que se haya estado desarrollando el proyecto.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Alta</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Conocimiento SOLID</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Nueva tecnología no utilizada con anterioridad.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Alta</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Conocimiento TypeScript</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Nuevo lenguaje de programación no utilizado con anterioridad.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Media</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Fecha de entrega</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Tiempo limitado para realizar el proyecto, coincide con más entregas y exámenes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Media</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;&lt;&lt;&lt;
+<a id="section-glossary"></a>
+== Glosario</p>
+<p class="tableblock">[role="arc42help"]
+<strong>*</strong>*
+.Glosario
+[options="header",cols="1,3"]</p></td>
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Lista de deudas técnicas</caption>
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Deuda técnica</th>
-<th class="tableblock halign-left valign-top">Descripción</th>
-<th class="tableblock halign-left valign-top">Prioridad</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Investigación sobre el entorno de trabajo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Una amplia búsqueda de información acerca de cómo trabajar con Typescript, Solid y React facilitará enormente el trabajo una vez iniciada la implementación ya que no será sobre territorio desconocido.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Media</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sopesar las decisiones tomadas</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Es conveniente que todo lo que se decida con respecto a la arquitectura del proyecto sea en base a un razonamiento y no de forma aleatoria. Así evitaremos cambios de planes en el último momento que puedan llegar a afectar negativamente al proyecto.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Baja</p></td>
-</tr>
-</tbody>
-</table>
-<div style="page-break-after: always;"></div>
+<div class="paragraph">
+<p>| Término         | Definición
+| Express     | También conocido como Express.js. Es un framework de aplicaciones web ligero y minimalista. Proporciona un amplio conjunto de funciones para crear aplicaciones web sobre NodeJS.
+| Git     | Git es un sistema de control de versiones distribuido gratuito y de código abierto diseñado para manejar todo, desde proyectos pequeños hasta proyectos muy grandes, con rapidez y eficiencia. Más información sobre Git y el control de versiones en <a href="https://git-scm.com/book/en/v2git" class="bare">https://git-scm.com/book/en/v2git</a>
+| Github     | Github (<a href="https://github.com" class="bare">https://github.com</a>) es un portal para gestionar las aplicaciones que utilizan el sistema Git. Además de permitir mirar el código y descargar las diferentes versiones de una aplicación, la plataforma también hace las veces de red social conectando desarrolladores con usuarios para que estos puedan colaborar mejorando la aplicación. Existen otras alternativas como gitlab (<a href="https://gitlab.com" class="bare">https://gitlab.com</a>) y Bitbucket (<a href="https://bitbucket.org/" class="bare">https://bitbucket.org/</a>).
+| JavaScript | Es un lenguaje de programación. Se suele abreviar como JS. Para una descripción más detallada puedes visitar <a href="https://es.wikipedia.org/wiki/JavaScript" class="bare">https://es.wikipedia.org/wiki/JavaScript</a>. También puedes consultar estos tutoriales: <a href="https://www.w3schools.com/js/" class="bare">https://www.w3schools.com/js/</a> y <a href="https://es.javascript.info/" class="bare">https://es.javascript.info/</a>
+| MERN | Es un conjunto de marcos de trabajo/tecnologías utilizados para el desarrollo web de aplicaciones que consta de MongoDB, React, Express y Node como sus componentes.
+| MongoDB     | MongoDB es una de las bases de datos NoSQL orientada a documentos. Ofrece una gran escalabilidad y flexibilidad. Más información en <a href="https://www.mongodb.com/es/" class="bare">https://www.mongodb.com/es/</a>
+| Node     | También conocido como Node.js. Es un entorno en tiempo de ejecución multiplataforma, de código abierto, para la capa del servidor (pero no limitándose a ello) basado en el lenguaje de programación JavaScript, asíncrono, con E/S de datos en una arquitectura orientada a eventos y basado en el motor V8 de Google. Más información sobre node.js en <a href="https://nodejs.org/es/" class="bare">https://nodejs.org/es/</a>
+| POD     | Acrónimo del inglés Personal Online Data. Es un contenedor digital que almacena los datos personales de un usuario. Se puede obtener un POD en <a href="https://solidproject.org/users/get-a-pod" class="bare">https://solidproject.org/users/get-a-pod</a>
+| React	 | React es una biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página. Más información sobre React en <a href="https://es.reactjs.org/" class="bare">https://es.reactjs.org/</a>
+| SOLID | Acrónimo del inglés Social Linked Data. Es un proyecto de descentralización de datos en la web dirigido por Tim Berners-Lee (inventor de la web semántica) desarrollado en el Instituto de Tecnología de Massachusetts (MIT). El objetivo principal del proyecto es cambiar de forma radical la manera en la que las aplicaciones web funcionan hoy en día, siendo el usuario quien decide dónde almacenar sus datos, mejorando de esta forma la privacidad. Mas información sobre SOLID en <a href="https://github.com/kustomzone/awesome-solid" class="bare">https://github.com/kustomzone/awesome-solid</a> y en <a href="https://github.com/itsee/awesome-solid" class="bare">https://github.com/itsee/awesome-solid</a>.  <strong>Atención: No confundir con los principios SOLID </strong> (<a href="https://es.wikipedia.org/wiki/SOLID" class="bare">https://es.wikipedia.org/wiki/SOLID</a>)
+| PlantUML | Herramienta de código abierto que permite la creación de una gran cantidad de tipos de diagramas (UML, de despliegue, de secuencia&#8230;&#8203;) de manera textual. Se puede obtener más información en <a href="https://plantuml.com/es/" class="bare">https://plantuml.com/es/</a>
+| MaterialUI | Biblioteca de código abierto que implementa el lenguaje visual de «materiales» de Google en sus componentes React. Ofrece la capacidad de combinar su biblioteca de interfaz de usuario, con el marco front-end de React. js. <a href="https://mui.com/" class="bare">https://mui.com/</a>
+| MapBox | API para calcular coordenadas y rutas <a href="https://www.mapbox.com/" class="bare">https://www.mapbox.com/</a></p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="section-glossary">5. Glosario</h2>
-<div class="sectionbody">
-<div class="sidebarblock arc42help">
+<div class="sidebarblock">
 <div class="content">
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Glosario</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 75%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Término</th>
-<th class="tableblock halign-left valign-top">Definición</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Express</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">También conocido como Express.js. Es un framework de aplicaciones web ligero y minimalista. Proporciona un amplio conjunto de funciones para crear aplicaciones web sobre NodeJS.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Git</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Git es un sistema de control de versiones distribuido gratuito y de código abierto diseñado para manejar todo, desde proyectos pequeños hasta proyectos muy grandes, con rapidez y eficiencia. Más información sobre Git y el control de versiones en <a href="https://git-scm.com/book/en/v2git" class="bare">https://git-scm.com/book/en/v2git</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Github</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Github (<a href="https://github.com" class="bare">https://github.com</a>) es un portal para gestionar las aplicaciones que utilizan el sistema Git. Además de permitir mirar el código y descargar las diferentes versiones de una aplicación, la plataforma también hace las veces de red social conectando desarrolladores con usuarios para que estos puedan colaborar mejorando la aplicación. Existen otras alternativas como gitlab (<a href="https://gitlab.com" class="bare">https://gitlab.com</a>) y Bitbucket (<a href="https://bitbucket.org/" class="bare">https://bitbucket.org/</a>).</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JavaScript</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Es un lenguaje de programación. Se suele abreviar como JS. Para una descripción más detallada puedes visitar <a href="https://es.wikipedia.org/wiki/JavaScript" class="bare">https://es.wikipedia.org/wiki/JavaScript</a>. También puedes consultar estos tutoriales: <a href="https://www.w3schools.com/js/" class="bare">https://www.w3schools.com/js/</a> y <a href="https://es.javascript.info/" class="bare">https://es.javascript.info/</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MERN</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Es un conjunto de marcos de trabajo/tecnologías utilizados para el desarrollo web de aplicaciones que consta de MongoDB, React, Express y Node como sus componentes.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MongoDB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MongoDB es una de las bases de datos NoSQL orientada a documentos. Ofrece una gran escalabilidad y flexibilidad. Más información en <a href="https://www.mongodb.com/es/" class="bare">https://www.mongodb.com/es/</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Node</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">También conocido como Node.js. Es un entorno en tiempo de ejecución multiplataforma, de código abierto, para la capa del servidor (pero no limitándose a ello) basado en el lenguaje de programación JavaScript, asíncrono, con E/S de datos en una arquitectura orientada a eventos y basado en el motor V8 de Google. Más información sobre node.js en <a href="https://nodejs.org/es/" class="bare">https://nodejs.org/es/</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">POD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Acrónimo del inglés Personal Online Data. Es un contenedor digital que almacena los datos personales de un usuario. Se puede obtener un POD en <a href="https://solidproject.org/users/get-a-pod" class="bare">https://solidproject.org/users/get-a-pod</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">React</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">React es una biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página. Más información sobre React en <a href="https://es.reactjs.org/" class="bare">https://es.reactjs.org/</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Acrónimo del inglés Social Linked Data. Es un proyecto de descentralización de datos en la web dirigido por Tim Berners-Lee (inventor de la web semántica) desarrollado en el Instituto de Tecnología de Massachusetts (MIT). El objetivo principal del proyecto es cambiar de forma radical la manera en la que las aplicaciones web funcionan hoy en día, siendo el usuario quien decide dónde almacenar sus datos, mejorando de esta forma la privacidad. Mas información sobre SOLID en <a href="https://github.com/kustomzone/awesome-solid" class="bare">https://github.com/kustomzone/awesome-solid</a> y en <a href="https://github.com/itsee/awesome-solid" class="bare">https://github.com/itsee/awesome-solid</a>.  <strong>Atención: No confundir con los principios SOLID </strong> (<a href="https://es.wikipedia.org/wiki/SOLID" class="bare">https://es.wikipedia.org/wiki/SOLID</a>)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PlantUML</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Herramienta de código abierto que permite la creación de una gran cantidad de tipos de diagramas (UML, de despliegue, de secuencia&#8230;&#8203;) de manera textual. Se puede obtener más información en <a href="https://plantuml.com/es/" class="bare">https://plantuml.com/es/</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MaterialUI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Biblioteca de código abierto que implementa el lenguaje visual de «materiales» de Google en sus componentes React. Ofrece la capacidad de combinar su biblioteca de interfaz de usuario, con el marco front-end de React. js. <a href="https://mui.com/" class="bare">https://mui.com/</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MapBox</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">API para calcular coordenadas y rutas <a href="https://www.mapbox.com/" class="bare">https://www.mapbox.com/</a></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 <div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p><strong>About arc42</strong></p>
@@ -1391,6 +1450,9 @@ software and system architecture.</p>
 We acknowledge that this document uses material from the
 arc 42 architecture template, <a href="http://www.arc42.de" class="bare">http://www.arc42.de</a>.
 Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
